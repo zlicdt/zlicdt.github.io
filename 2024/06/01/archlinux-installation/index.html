@@ -22,7 +22,7 @@
     <meta name="description" content="此文章适用于现代（2010年及以后）的x86_64机器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch Linux 安装教程">
-<meta property="og:url" content="https://zlicdt.github.io/2024/01/01/archlinux-installation/index.html">
+<meta property="og:url" content="https://zlicdt.github.io/2024/06/01/archlinux-installation/index.html">
 <meta property="og:site_name" content="zlicdt&#39;s blog">
 <meta property="og:description" content="此文章适用于现代（2010年及以后）的x86_64机器">
 <meta property="og:locale" content="zh_CN">
@@ -30,8 +30,8 @@
 <meta property="og:image" content="https://zlicdt.github.io/img/archlinux-installation/2.png">
 <meta property="og:image" content="https://zlicdt.github.io/img/archlinux-installation/3.png">
 <meta property="og:image" content="https://zlicdt.github.io/img/archlinux-installation/4.png">
-<meta property="article:published_time" content="2024-01-01T11:40:00.000Z">
-<meta property="article:modified_time" content="2024-08-11T13:15:18.538Z">
+<meta property="article:published_time" content="2024-06-01T11:40:00.000Z">
+<meta property="article:modified_time" content="2024-08-12T07:10:53.667Z">
 <meta property="article:author" content="zlicdt">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-01 11:40" pubdate>
-          2024年1月1日 中午
+        <time datetime="2024-06-01 11:40" pubdate>
+          2024年6月1日 中午
         </time>
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          20 分钟
+          21 分钟
         
       </span>
     
@@ -283,7 +283,7 @@
                 
                 <p><strong>此文章适用于现代（2010年及以后）的x86_64机器</strong></p>
 <span id="more"></span>
-<p>用了这么长时间Arch，总该写一篇安装教程了。<br>截至教程发布日，Arch Linux Live CD的最新版本是2023年10月的，经测试没有问题。</p>
+<p>用了这么长时间Arch，总该写一篇安装教程了。<br>截至教程发布日，Arch Linux Live CD的最新版本是2024年5月的，经测试没有问题。</p>
 <h2 id="支持的硬件"><a href="#支持的硬件" class="headerlink" title="支持的硬件"></a>支持的硬件</h2><p><strong>·x86_64架构的CPU，建议为2008年以后的CPU<br>·至少有1GB内存（Arch Wiki上写的最小的512MB现在已经无法启动11月的Live CD）<br>·可用的网络连接<br>·20GB可用的硬盘空间</strong></p>
 <h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><h3 id="制作安装介质"><a href="#制作安装介质" class="headerlink" title="制作安装介质"></a>制作安装介质</h3><ol>
 <li>到镜像站去下载最新的Arch Linux Live CD iso -&gt;<br><code>https://mirrors.ustc.edu.cn/archlinux/iso/latest/archlinux-x86_64.iso</code></li>
@@ -325,7 +325,7 @@
 <li>结束后，选<code>Write</code>再输入<code>yes</code>来写入分区表，再选<code>Quit</code>退出</li>
 </ul>
 </li>
-<li>建立文件系统 -&gt;<br> 主分区使用<code>xfs</code>文件系统 <div class="note note-warning">
+<li>建立文件系统 -&gt;<br> 主分区使用<code>ext4</code>文件系统 <div class="note note-warning">
             <p>如果先前安装了Windows或者其他操作系统，不要执行第一条，会导致Windows引导损坏。</p>
           </div>
  <div class="note note-info">
@@ -339,10 +339,10 @@
             <p>改，勿照抄。<code>/</code>的<code>nvme0n1p2</code>挂载到<code>/mnt</code>，再把<code>nvme0n1p1</code>这个EFI分区挂到<code>/mnt/boot/efi</code>下。</p>
           </div>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mount /dev/nvme0n1p2 /mnt<br><span class="hljs-built_in">mkdir</span> -p /mnt/boot/efi<br>mount /dev/nvme0n1p1 /mnt/boot/efi<br></code></pre></td></tr></table></figure></li>
-<li>创建<code>swapfile</code> -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/mnt/swapfile bs=1M count=8192<br><span class="hljs-built_in">chmod</span> 600 /mnt/swapfile<br>mkswap /mnt/swapfile<br>swapon /mnt/swapfile<br></code></pre></td></tr></table></figure>
- <div class="note note-info">
-            <p>这里<code>swap</code>创建为8G，可根据需要改变<code>count=</code>后的数字，单位是MB。当然如果内存够大也可以不用加。</p>
-          </div></li>
+<li>创建<code>swapfile</code> -&gt; <div class="note note-info">
+            <p>这里<code>swap</code>创建为8G，可根据需要改变<code>count=</code>后的数字，单位是MB。当然如果内存够大也可以不用执行这些命令。</p>
+          </div>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/mnt/swapfile bs=1M count=8192<br><span class="hljs-built_in">chmod</span> 600 /mnt/swapfile<br>mkswap /mnt/swapfile<br>swapon /mnt/swapfile<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><ol>
 <li>安装软件包 -&gt;<br> <strong>首先初始化keyring！！</strong> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -Sy archlinux-keyring<br></code></pre></td></tr></table></figure>
@@ -460,7 +460,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Arch Linux 安装教程</div>
-      <div>https://zlicdt.github.io/2024/01/01/archlinux-installation/</div>
+      <div>https://zlicdt.github.io/2024/06/01/archlinux-installation/</div>
     </div>
     <div class="license-meta">
       
@@ -472,7 +472,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月1日</div>
+          <div>2024年6月1日</div>
         </div>
       
       
@@ -504,9 +504,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/06/hexo-fluid-with-gitalk/" title="Hexo Fluid 主题安装 Gitalk">
+                      <a href="/2024/08/12/why-choose-mac/" title="为什么选择 Mac">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo Fluid 主题安装 Gitalk</span>
+                        <span class="hidden-mobile">为什么选择 Mac</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -514,8 +514,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/02/random-makeing-note/" title="如何用 Electron 制作一个抽号的程序">
-                        <span class="hidden-mobile">如何用 Electron 制作一个抽号的程序</span>
+                      <a href="/2024/01/19/gpg-tourial/" title="GPG 入门教程">
+                        <span class="hidden-mobile">GPG 入门教程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
