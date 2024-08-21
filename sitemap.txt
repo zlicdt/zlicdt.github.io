@@ -1,3 +1,4 @@
+https://zlicdt.github.io/2024/08/21/git-guide/
 https://zlicdt.github.io/2024/08/12/why-choose-mac/
 https://zlicdt.github.io/2024/06/01/archlinux-installation/
 https://zlicdt.github.io/2024/01/06/hexo-fluid-with-gitalk/
@@ -18,5 +19,6 @@ https://zlicdt.github.io/tags/AI/
 https://zlicdt.github.io/tags/Electron/
 https://zlicdt.github.io/tags/C/
 https://zlicdt.github.io/tags/%E6%9D%82%E8%AE%B0/
+https://zlicdt.github.io/tags/git/
 https://zlicdt.github.io/categories/Software/
 https://zlicdt.github.io/categories/Programming/
