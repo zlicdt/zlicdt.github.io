@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zlicdt.github.io/2024/09/08/archlinux-installation/</loc>
+    
+    <lastmod>2024-09-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zlicdt.github.io/2024/08/21/git-guide/</loc>
     
     <lastmod>2024-08-21</lastmod>
@@ -14,15 +23,6 @@
     <loc>https://zlicdt.github.io/2024/08/12/why-choose-mac/</loc>
     
     <lastmod>2024-08-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zlicdt.github.io/2024/06/01/archlinux-installation/</loc>
-    
-    <lastmod>2024-08-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +103,7 @@
 
   <url>
     <loc>https://zlicdt.github.io/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,70 +111,70 @@
   
   <url>
     <loc>https://zlicdt.github.io/tags/Docker/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/Linux/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/C/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/GPG/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/hexo/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/AI/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/Electron/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/C/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/tags/git/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -183,14 +183,14 @@
   
   <url>
     <loc>https://zlicdt.github.io/categories/Software/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zlicdt.github.io/categories/Programming/</loc>
-    <lastmod>2024-08-22</lastmod>
+    <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

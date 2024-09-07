@@ -1,6 +1,6 @@
+https://zlicdt.github.io/2024/09/08/archlinux-installation/
 https://zlicdt.github.io/2024/08/21/git-guide/
 https://zlicdt.github.io/2024/08/12/why-choose-mac/
-https://zlicdt.github.io/2024/06/01/archlinux-installation/
 https://zlicdt.github.io/2024/01/06/hexo-fluid-with-gitalk/
 https://zlicdt.github.io/2022/11/29/archlinux-deploy-docker/
 https://zlicdt.github.io/about/index.html
