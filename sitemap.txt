@@ -1,9 +1,9 @@
+https://blog.zlicdt.top/about/index.html
 https://blog.zlicdt.top/2024/09/08/archlinux-installation/
 https://blog.zlicdt.top/2024/08/21/git-guide/
 https://blog.zlicdt.top/2024/08/12/why-choose-mac/
 https://blog.zlicdt.top/2024/01/06/hexo-fluid-with-gitalk/
 https://blog.zlicdt.top/2022/11/29/archlinux-deploy-docker/
-https://blog.zlicdt.top/about/index.html
 https://blog.zlicdt.top/2009/03/16/cpp-fast-out-of-memory/
 https://blog.zlicdt.top/2024/01/19/gpg-tourial/
 https://blog.zlicdt.top/2022/12/15/katago/
