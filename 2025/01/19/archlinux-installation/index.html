@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/3.png">
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/4.png">
 <meta property="article:published_time" content="2025-01-19T14:30:00.000Z">
-<meta property="article:modified_time" content="2025-03-09T10:33:46.746Z">
+<meta property="article:modified_time" content="2025-06-01T06:03:26.300Z">
 <meta property="article:author" content="zlicdt">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -332,7 +332,7 @@
             <p>如果没有<code>wlan0</code>的话，可能是没有无线网卡或者是没有驱动，请插网线。如果没有RJ45网口，请更换无线网卡至AX210（<br>对于另一种情况（通常和上面提到的循环重启绑定），参见下面的内容<br>若<code>ip addr</code>返回了wlan0的信息并且下面有正确的ip，则代表网络已连接成功。</p>
           </div>
  <div class="note note-warning">
-            <p>遇到循环重启的情况下，通常正常开机之后无线网卡是关闭的，需要手动开启</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">iwctl<br>adapter phy0 set-property Powered on<br>device wlan0 set-property Powered on<br></code></pre></td></tr></table></figure><p>之后和正常的操作方式并无差异</p>
+            <p>遇到循环重启的情况下，通常正常开机之后无线网卡被block了，需要手动unblock</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rfkill unblock all<br></code></pre></td></tr></table></figure><p>之后和正常的操作方式并无差异</p>
           </div>
  可选：停止<code>reflector</code>服务，防止<code>/etc/pacman.d/mirrorlist</code>被写入其他地区镜像 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop reflector.service<br></code></pre></td></tr></table></figure></li>
 <li>配置镜像<br> 国内网络环境懂得都懂，用镜像（注意：这一步须在<code>reflector.service</code>停止后进行，可手动结束或等待其执行完成，否则编辑完的<code>mirrorlist</code>会被它重写） -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/pacman.d/mirrorlist<br></code></pre></td></tr></table></figure>
