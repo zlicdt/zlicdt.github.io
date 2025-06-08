@@ -1,3 +1,4 @@
+https://blog.zlicdt.top/2025/06/08/algorithm-enumerate/
 https://blog.zlicdt.top/2025/06/05/vim-configure/
 https://blog.zlicdt.top/2025/01/19/archlinux-installation/
 https://blog.zlicdt.top/about/index.html
@@ -24,5 +25,7 @@ https://blog.zlicdt.top/tags/AI/
 https://blog.zlicdt.top/tags/Electron/
 https://blog.zlicdt.top/tags/Minecraft/
 https://blog.zlicdt.top/tags/vim/
+https://blog.zlicdt.top/tags/algorithm/
 https://blog.zlicdt.top/categories/Software/
 https://blog.zlicdt.top/categories/Programming/
+https://blog.zlicdt.top/categories/Algorithm/

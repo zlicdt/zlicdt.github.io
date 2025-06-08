@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.zlicdt.top/2025/06/08/algorithm-enumerate/</loc>
+    
+    <lastmod>2025-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.zlicdt.top/2025/06/05/vim-configure/</loc>
     
     <lastmod>2025-06-05</lastmod>
@@ -130,7 +139,7 @@
 
   <url>
     <loc>https://blog.zlicdt.top/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -138,77 +147,84 @@
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Talk/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Docker/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Linux/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/C/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/git/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/GPG/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/hexo/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/AI/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Electron/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Minecraft/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/tags/vim/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zlicdt.top/tags/algorithm/</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -217,14 +233,21 @@
   
   <url>
     <loc>https://blog.zlicdt.top/categories/Software/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://blog.zlicdt.top/categories/Programming/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zlicdt.top/categories/Algorithm/</loc>
+    <lastmod>2025-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
