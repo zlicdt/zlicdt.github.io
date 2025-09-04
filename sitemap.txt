@@ -1,3 +1,4 @@
+https://blog.zlicdt.top/2025/08/28/macfoc/
 https://blog.zlicdt.top/2025/08/27/log-tailscale-1/
 https://blog.zlicdt.top/2024/01/06/hexo-fluid-with-gitalk/
 https://blog.zlicdt.top/2022/12/15/katago/
@@ -28,6 +29,7 @@ https://blog.zlicdt.top/tags/Electron/
 https://blog.zlicdt.top/tags/Minecraft/
 https://blog.zlicdt.top/tags/vim/
 https://blog.zlicdt.top/tags/Tailscale/
+https://blog.zlicdt.top/tags/Tutorial/
 https://blog.zlicdt.top/categories/Algorithm/
 https://blog.zlicdt.top/categories/Software/
 https://blog.zlicdt.top/categories/Programming/
