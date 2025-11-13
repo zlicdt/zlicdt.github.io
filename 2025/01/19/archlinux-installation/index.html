@@ -28,10 +28,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/1.png">
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/2.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/5.png">
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/3.png">
 <meta property="og:image" content="https://blog.zlicdt.top/img/archlinux-installation/4.png">
 <meta property="article:published_time" content="2025-01-19T14:30:00.000Z">
-<meta property="article:modified_time" content="2025-11-03T16:18:53.413Z">
+<meta property="article:modified_time" content="2025-11-13T02:52:51.865Z">
 <meta property="article:author" content="zlicdt">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -417,22 +418,37 @@
 </ol>
 <h3 id="进一步配置系统"><a href="#进一步配置系统" class="headerlink" title="进一步配置系统"></a>进一步配置系统</h3><p><strong>如果是KDE的话</strong>，重启系统后，大概就是这样的 -&gt;<br><img src="/../img/archlinux-installation/2.png" srcset="/img/loading.gif" lazyload></p>
 <ol>
-<li>输入法配置<br> 如果直接<code>右键</code>-<code>配置</code>是会显示这个的 -&gt;<br> <img src="/../img/archlinux-installation/3.png" srcset="/img/loading.gif" lazyload><br> 这会进入文本配置，显然我们是不懂的（<br> 所以要安装<code>fcitx5-configtool</code> -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S fcitx5-configtool<br></code></pre></td></tr></table></figure>
- 然后再<code>右键</code>-<code>配置</code>就可以看到 -&gt;<br> <img src="/../img/archlinux-installation/4.png" srcset="/img/loading.gif" lazyload><br> 然而现在按<code>Ctrl+Tab</code>是不能切换到拼音输入法的，我们需要把<code>Fcitx5</code>设为默认输入法并自动启动 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/environment<br></code></pre></td></tr></table></figure>
- 把下面的东西加进去 -&gt; <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">GTK_IM_MODULE=fcitx<br>QT_IM_MODULE=fcitx<br>XMODIFIERS=@im=fcitx<br>SDL_IM_MODULE=fcitx<br>GLFW_IM_MODULE=ibus<br></code></pre></td></tr></table></figure>
- 重新登录就可以正常使用了<br> 更多用法请参阅<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Wiki</a></li>
-<li>软件源<br> 众所周知，官方源对于灰色地带&#x2F;非自由软件是不收录的。<br> 所以我们通常用第三方源+<code>AUR</code>来进行补充。<br> 官方源是不带任何<code>AUR</code>工具的，所以我们先装<code>archlinuxcn</code>源 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/pacman.conf<br></code></pre></td></tr></table></figure>
- 加入以下文本 -&gt; <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[archlinuxcn]<br>Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch<br></code></pre></td></tr></table></figure>
- 然后获取<code>keyring</code> -&gt; <div class="note note-warning">
+<li><p>输入法配置<br> 首先把<code>Fcitx5</code>设为默认输入法并自动启动 -&gt;<br> 编辑 &#x2F;etc&#x2F;environment</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/environment<br></code></pre></td></tr></table></figure>
+<p> 把下面的东西加进去 -&gt;</p>
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">GTK_IM_MODULE=fcitx<br>QT_IM_MODULE=fcitx<br>XMODIFIERS=@im=fcitx<br>SDL_IM_MODULE=fcitx<br>GLFW_IM_MODULE=ibus<br></code></pre></td></tr></table></figure>
+<p> 进入设置 -&gt; 键盘 -&gt; 虚拟键盘，并按使用的 Compositor 设置：<br> <img src="/../img/archlinux-installation/5.png" srcset="/img/loading.gif" lazyload><br> 之后注意任务栏右下角的键盘图标：<br> 如果直接<code>右键</code>-<code>配置</code>是会显示这个的 -&gt;<br> <img src="/../img/archlinux-installation/3.png" srcset="/img/loading.gif" lazyload><br> 这会进入文本配置，显然我们是不懂的（<br> 所以要安装<code>fcitx5-configtool</code> -&gt;</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S fcitx5-configtool<br></code></pre></td></tr></table></figure>
+<p> 然后再<code>右键</code>-<code>配置</code>就可以看到 -&gt;<br> <img src="/../img/archlinux-installation/4.png" srcset="/img/loading.gif" lazyload></p>
+<p> 重新登录就可以正常使用了<br> 更多用法请参阅<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch Wiki</a></p>
+</li>
+<li><p>软件源<br> 众所周知，官方源对于灰色地带&#x2F;非自由软件是不收录的。<br> 所以我们通常用第三方源+<code>AUR</code>来进行补充。<br> 官方源是不带任何<code>AUR</code>工具的，所以我们先装<code>archlinuxcn</code>源 -&gt;</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vim /etc/pacman.conf<br></code></pre></td></tr></table></figure>
+<p> 加入以下文本 -&gt;</p>
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[archlinuxcn]<br>Server = https://mirrors.bfsu.edu.cn/archlinuxcn/$arch<br></code></pre></td></tr></table></figure>
+<p> 然后获取<code>keyring</code> -&gt;</p>
+ <div class="note note-warning">
             <p>（2024.9.7测试问题已解决，此部分的内容已过时，仅在后续出现类似问题时供参考用）<br>近期这一步会出现问题，因为archlinuxcn 社区源的 keyring 包 archlinuxcn-keyring 由 farseerfc 的 key 签署验证，而 Arch Linux 官方 keyring 中包含了 farseerfc 的 key 。自12月初 archlinux-keyring 中删除了一个退任的 master key (<a target="_blank" rel="noopener" href="https://gitlab.archlinux.org/archlinux/archlinux-keyring/-/issues/246">https://gitlab.archlinux.org/archlinux/archlinux-keyring/-/issues/246</a>) 导致 farseerfc 的 key 的信任数不足，由 GnuPG 的 web of trust 推算为 marginal trust，从而不再能自动信任 archlinuxcn-keyring 包的签名。(转自Arch Linux CN Telegram Messages Channel)</p>
           </div>
- 如果你在新系统中尝试安装<code>archlinuxcn-keyring</code>包时遇到如下报错： <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">error: archlinuxcn-keyring: Signature from &quot;Jiachen YANG (Arch Linux Packager Signing Key) &lt;farseerfc@archlinux.org&gt;&quot; is marginal trust<br></code></pre></td></tr></table></figure>
- 请使用以下命令在本地信任 farseerfc 的 key 。此 key 已随<code>archlinux-keyring</code>安装在系统中，只是缺乏信任： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo pacman-key --lsign-key &quot;farseerfc@archlinux.org&quot;<br></code></pre></td></tr></table></figure>
- 然后 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy archlinuxcn-keyring<br></code></pre></td></tr></table></figure>
- 就可以使用<code>archlinuxcn</code>源了！<br> 由于要使用<code>AUR</code>，所以我们先装一个AUR工具： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S paru<br></code></pre></td></tr></table></figure>
- 详细的用法和<code>pacman</code>一样。</li>
-<li>引导Windows<br> 在安装系统时，<code>os-prober</code>往往不能正常检测到Windows，需要我们再运行 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
- 重启即可看到<code>Windows Boot Manager</code>。</li>
+<p> 如果你在新系统中尝试安装<code>archlinuxcn-keyring</code>包时遇到如下报错：</p>
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">error: archlinuxcn-keyring: Signature from &quot;Jiachen YANG (Arch Linux Packager Signing Key) &lt;farseerfc@archlinux.org&gt;&quot; is marginal trust<br></code></pre></td></tr></table></figure>
+<p> 请使用以下命令在本地信任 farseerfc 的 key 。此 key 已随<code>archlinux-keyring</code>安装在系统中，只是缺乏信任：</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo pacman-key --lsign-key &quot;farseerfc@archlinux.org&quot;<br></code></pre></td></tr></table></figure>
+<p> 然后</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -Sy archlinuxcn-keyring<br></code></pre></td></tr></table></figure>
+<p> 就可以使用<code>archlinuxcn</code>源了！<br> 由于要使用<code>AUR</code>，所以我们先装一个AUR工具：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S paru<br></code></pre></td></tr></table></figure>
+<p> 详细的用法和<code>pacman</code>一样。</p>
+</li>
+<li><p>引导Windows<br> 在安装系统时，<code>os-prober</code>往往不能正常检测到Windows，需要我们再运行</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> grub-mkconfig -o /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<p> 重启即可看到<code>Windows Boot Manager</code>。</p>
+</li>
 </ol>
 <h2 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h2><p>如果是A卡和I卡，开源的驱动会做得很好</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pacman -S xf86-video-amdgpu <span class="hljs-comment"># AMD</span><br><span class="hljs-built_in">sudo</span> pacman -S xf86-video-intel <span class="hljs-comment"># Intel</span><br></code></pre></td></tr></table></figure>
