@@ -1,3 +1,5 @@
+https://blog.zlicdt.top/2025/11/14/algorithm-heap/
+https://blog.zlicdt.top/2025/06/08/algorithm-enumerate/
 https://blog.zlicdt.top/about/index.html
 https://blog.zlicdt.top/2025/01/19/archlinux-installation/
 https://blog.zlicdt.top/2025/11/05/zeditor/
@@ -13,7 +15,6 @@ https://blog.zlicdt.top/2024/08/12/why-choose-mac/
 https://blog.zlicdt.top/2025/01/15/A0/
 https://blog.zlicdt.top/2025/02/14/A1/
 https://blog.zlicdt.top/2025/09/30/A2/
-https://blog.zlicdt.top/2025/06/08/algorithm-enumerate/
 https://blog.zlicdt.top/2022/11/29/archlinux-deploy-docker/
 https://blog.zlicdt.top/2009/03/16/cpp-fast-out-of-memory/
 https://blog.zlicdt.top/2024/08/21/git-guide/
@@ -33,6 +34,7 @@ https://blog.zlicdt.top/tags/Electron/
 https://blog.zlicdt.top/tags/Minecraft/
 https://blog.zlicdt.top/tags/vim/
 https://blog.zlicdt.top/tags/Goods/
+https://blog.zlicdt.top/tags/Algorithm/
 https://blog.zlicdt.top/categories/Algorithm/
 https://blog.zlicdt.top/categories/Software/
 https://blog.zlicdt.top/categories/Programming/
