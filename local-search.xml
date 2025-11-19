@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>多重 SSH TCP 隧道转发</title>
+    <link href="/2025/11/19/multiple-forward/"/>
+    <url>/2025/11/19/multiple-forward/</url>
+    
+    <content type="html"><![CDATA[<p>熟悉我的人都知道，我的 homelab 网络环境灵车</p><span id="more"></span><h2 id="过时记录"><a href="#过时记录" class="headerlink" title="过时记录"></a>过时记录</h2><p>这套东西我从2020年用到现在，已经再熟悉不过了。<br>但因为这是2025年年末，所以是非常晚来的一篇 blog 来记录。</p><blockquote><p>我们可以到处用到这个东西，适用面比较广，在遇到一些情况的时候……</p></blockquote><h2 id="ssh-tcp-转发"><a href="#ssh-tcp-转发" class="headerlink" title="ssh tcp 转发"></a>ssh tcp 转发</h2><h3 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h3><ol><li><p>使用了 Django 写了点东西，交给客户看，然而 dev server 在家（可以使用 <code>frp/tailscale</code> 转出来），到了客户公司，怎么给他们看呢？</p><blockquote><p>访问开了 http 的端口。使用 Tailscale 时，正常直接使用分配的100开头ip+端口就好了；在使用 frp 时，转发对应的端口就好……</p></blockquote><p> 问题在于 Django 的 dev server 默认有一个ip限制，在白名单之外的 ip 都不让访问，返回 HTTP 403。<br> 既然这样，如果没有提前修改白名单，这时候就不能以正常方式访问了。</p></li><li><p>使用了 docker 部署的 natfrp launcher，想访问 web 控制台。</p><blockquote><p>同理正常应该如上的方式访问7102端口，不过 launcher 限制只允许来自 localhost&#x2F;127.0.0.1 的访问。</p></blockquote><p> 如上，会返回 HTTP 400.</p></li></ol><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>转发的方式非常简单。只要能 ssh 连上远程的机器，就可以进行。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -L &lt;本地端口&gt;:&lt;目标主机&gt;:&lt;目标端口&gt; &lt;SSH服务器用户&gt;@&lt;SSH服务器地址&gt;<br></code></pre></td></tr></table></figure><p>如上面的第二个例子，我需要将远程的7102转到本地的7102端口上，那么：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在这里使用 Tailscale.</span><br>ssh -L 7102:localhost:7102 100.114.51.4<br></code></pre></td></tr></table></figure><blockquote><p>如果端口号小于1024，是一个已知端口，需要高权限才能创建转发。使用 root 权限</p></blockquote><p>远程的用户必须具有使用 ssh 命令的能力，所以 login shell 不能是 nologin.</p><p>如果你使用某些共享 ip 的 frps，这些路子比较多日后再讨论。不过提供参考：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -L 7102:localhost:7102 -p 11451 frp-homo.lab<br></code></pre></td></tr></table></figure><p>区别就是加入了指定端口。</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">tcp 流量 -&gt; remote -&gt; frpc -&gt; frps in port -&gt; frps out port -&gt; host -&gt; host some port<br></code></pre></td></tr></table></figure><h2 id="多重转发"><a href="#多重转发" class="headerlink" title="多重转发"></a>多重转发</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这里也是在上文中使用 natfrp launcher 的过程中发生的事。</p><p>我有一台机器(A)有 Tailscale，另一台(B)没有。<br>A 是 headless 机器，我不能直接转发在它上面使用浏览器，也不能在 B 上使用浏览器访问这台机器的7102，因为 B 的 ip 不是 127.0.0.1（废话！）</p><p>假设 A : 192.168.114.51</p><h3 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h3><p>既然 remote 的7102被映射到了 A 的7102上，那么我们可以把 A 的7102再映射到 B 的7102上（实际，不一定要7102）。</p><p>在 ssh -L 执行时，会进入 shell 已经是最基础的了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">zlicdt@B $ ssh -L 7102:localhost:7102 192.168.114.51<br><br>zlicdt@A $ ssh -L 7102:localhost:7102 100.114.51.4<br><br>zlicdt@frpc $<br></code></pre></td></tr></table></figure><p>这样，remote 的7102开的 control panel 会认为是从 localhost 来的流量，也就会放行了。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ssh</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>DSA 笔记 -&gt; Heap</title>
     <link href="/2025/11/14/algorithm-heap/"/>
     <url>/2025/11/14/algorithm-heap/</url>

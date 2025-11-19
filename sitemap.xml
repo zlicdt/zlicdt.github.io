@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.zlicdt.top/2025/11/19/multiple-forward/</loc>
+    
+    <lastmod>2025-11-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.zlicdt.top/2025/11/05/zeditor/</loc>
     
     <lastmod>2025-11-15</lastmod>
@@ -297,6 +306,13 @@
   
   <url>
     <loc>https://blog.zlicdt.top/tags/Algorithm/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.zlicdt.top/tags/ssh/</loc>
     <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

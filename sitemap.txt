@@ -1,3 +1,4 @@
+https://blog.zlicdt.top/2025/11/19/multiple-forward/
 https://blog.zlicdt.top/2025/11/05/zeditor/
 https://blog.zlicdt.top/2025/11/14/algorithm-heap/
 https://blog.zlicdt.top/2025/06/08/algorithm-enumerate/
@@ -35,6 +36,7 @@ https://blog.zlicdt.top/tags/Minecraft/
 https://blog.zlicdt.top/tags/vim/
 https://blog.zlicdt.top/tags/Goods/
 https://blog.zlicdt.top/tags/Algorithm/
+https://blog.zlicdt.top/tags/ssh/
 https://blog.zlicdt.top/categories/Algorithm/
 https://blog.zlicdt.top/categories/Software/
 https://blog.zlicdt.top/categories/Programming/
