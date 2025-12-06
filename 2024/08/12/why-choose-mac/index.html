@@ -337,7 +337,9 @@
 <p> 举个例子：<br> 你在使用VSCode撰写Markdown文章，就像我现在这样。<br> 然而你注意到，现在编辑器内显示的中文文字很丑，它大概是叫做“宋体”的字体。<br> 但是英文确是你在settings.json里设置的Cascadia Code等宽字体。</p>
 <p> 这就涉及到了字体回落。<br> 在字体没有提供中文文字时，Windows会把中文文字以宋体显示。<br> 没错，这里的默认回落字体是宋体。</p>
 <p> 如果你想使用好看一点的微软雅黑，你需要这么做：</p>
- <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;editor.fontFamily&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Cascadia Code, &#x27;微软雅黑&#x27;&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+ <div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;editor.fontFamily&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Cascadia Code, &#x27;微软雅黑&#x27;&quot;</span><span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">&#125;</span></code></pre></div>
 <p> 然而在Mac上，这个问题是不存在的。<br> 当你使用中文locale时，默认的回落字体是苹方。</p>
 </li>
 <li><p>Unix环境<br> 这个问题和上面的包管理器问题是同源的。<br> Mac上有大量的移植软件，几乎所有开发工具都有Mac版本。</p>

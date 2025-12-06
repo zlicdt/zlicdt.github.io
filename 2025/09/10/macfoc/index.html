@@ -367,12 +367,12 @@
 <h3 id="安装-Xcode-命令行工具"><a href="#安装-Xcode-命令行工具" class="headerlink" title="安装 Xcode 命令行工具"></a>安装 Xcode 命令行工具</h3><p>为什么呢？</p>
 <p>因为这是苹果官方支持的方式，而且就算使用brew装别的东西也绕不开它，因为里面有git。</p>
 <p>之后，我们输入：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">xcode-select --install<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs text">xcode-select --install</code></pre></div>
 
 <p>我们在这里使用的是Shell，Shell是一个壳，用以使用命令和OS交互。macOS默认的Shell是zsh。</p>
 <p>如果没有安装过的话，会弹出一个窗口，询问是否要安装“Xcode命令行工具”，在这里就要你自己选择了。<br>（如果你想选否……那我问你，？）</p>
 <p>在安装完毕后，再开一个Terminal窗口（用以刷新PATH防止找不到），输入</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">clang -v<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs text">clang -v</code></pre></div>
 
 <p>如果看到以下输出，就是成功了<br><img src="/../img/macfoc/success.png" srcset="/img/loading.gif" lazyload><br>不成功有以下的原因</p>
 <ol>
@@ -381,7 +381,9 @@
 <li>中途断了<br>否则很难失败。如果失败了，重新<code>xcode-select --install</code>吧</li>
 </ol>
 <p>这时候，我们就可以测试构建了</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-keyword">return</span>;
+&#125;</code></pre></div>
 
 <p>这是一个最基础的C语言程序对吧</p>
 <p>复制一下它，带好了，一会要用。</p>
@@ -393,13 +395,13 @@
 <p>我在这里解释一下，<code>:</code>代表后面跟的是命令，<code>w</code>是 write 写入，<code>q</code>是 quit 退出。</p>
 <p>之后我们就回到了 Shell。</p>
 <p>执行<code>ls</code>，就可以看到目录下多出来的<code>a.c</code>文件。<code>ls</code>是一个用于列出当前目录下文件或目录的命令（老登建议使用eza替代）。</p>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">clang a.c<br></code></pre></td></tr></table></figure>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><div class="code-wrapper"><pre><code class="hljs bash">clang a.c</code></pre></div>
 <p>就会看到主目录下出现了一个叫<code>a.out</code>的文件，这就是编译成果了，一个二进制文件，可以执行。<code>a.out</code>是 gcc&#x2F;clang 默认的输出文件名。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./a.out<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">./a.out</code></pre></div>
 
 <p>然后会看到，执行完毕什么也没有，这是因为本来程序就是空的。不过，执行成功了就好。</p>
 <p>虽然到这里就好了，但是你还是要学会删除文件的命令（我相信你们有耳闻rm -rf），删除这俩临时文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -f a.c a.out<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -f a.c a.out</code></pre></div>
 
 <div class="note note-warning">
             <p>掘地三尺！同学们</p>
@@ -436,16 +438,22 @@
 <p>这是macOS在<del>Apple Silicon时代</del>T2末期的安全政策收紧，从10.15之后，就这样了。如今是无解的。</p>
 <p>怎么办呢？不怕，试试我给Q酱写的脚本！哎，怎么传达出去呢～<br><a target="_blank" rel="noopener" href="https://github.com/zlicdt/compile4run">https://github.com/zlicdt/compile4run</a></p>
 <p>用法参见仓库的README，执行完我提供的命令之后，就可以使用形如</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">compile4run a.c<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">compile4run a.c</code></pre></div>
 <p>这种形式的命令来编译并运行程序了。</p>
 <h3 id="打包-📦（重要）"><a href="#打包-📦（重要）" class="headerlink" title="打包 📦（重要）"></a>打包 📦（重要）</h3><p>这是一个<strong>很严重的、叫苦不迭的点</strong></p>
 <p>在这一块的，autolab需要打包为.zip，还好</p>
 <p>但是这玩意的脚本是怎么写的呢？我来依靠行为给你逆推一下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">unzip x114514191.zip<br>gcc *.c -o main.o<br>judge.py -? ./main.o<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">unzip x114514191.zip
+gcc *.c -o main.o
+judge.py -? ./main.o</code></pre></div>
 
 <p>大差不差，相信老登们已经发现了：<br>呀，压缩包的root直接就是这堆源文件，不能套一层文件夹，不然就是<code>cc: error: no input files</code></p>
 <p>所以，这样做：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 你的源码目录<br><span class="hljs-built_in">ls</span> <span class="hljs-comment"># 检查一下现在是否下面直接就是那堆源码文件了</span><br>zip x114514191 *.c *.h<br><span class="hljs-comment"># 这里的压缩命令，如果目录下没有对应的文件，zsh会报匹配不上的问题</span><br><span class="hljs-comment"># 参见我最后放的视频</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 你的源码目录
+<span class="hljs-built_in">ls</span> <span class="hljs-comment"># 检查一下现在是否下面直接就是那堆源码文件了</span>
+zip x114514191 *.c *.h
+<span class="hljs-comment"># 这里的压缩命令，如果目录下没有对应的文件，zsh会报匹配不上的问题</span>
+<span class="hljs-comment"># 参见我最后放的视频</span></code></pre></div>
 <p>其中x114514191是你的学号。</p>
 <p>之后上传这个x114514191.zip，就万无一失了，否则会触发对机魂的曲解导致的斩杀</p>
 <h2 id="关于-Project"><a href="#关于-Project" class="headerlink" title="关于 Project"></a>关于 Project</h2><p>在学期的最后，你们要做一个Project。他们会给出一个Requirements清单，按照上面的要求，实现一个命令行交互的程序，通常是CRUD内容。要求使用多文件、宏定义与编写头文件以复用函数。</p>
@@ -460,11 +468,14 @@
 
 <p>之后无法构建，因为引入了不存在的头文件。临提交前几个小时，开始手忙脚乱得修改。</p>
 <p>这就结束了吗？错误的。这位同学想玩点花样，在结束一步的操作之后，试图清屏。因为这位同学实在是太喜欢Windows了，于是在这份代码中，使用了：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">system(<span class="hljs-string">&quot;cls&quot;</span>);<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs C">system(<span class="hljs-string">&quot;cls&quot;</span>);</code></pre></div>
 
 <p>md，本来你调用shell命令的行为就很恶意了（我是没敢用的），但是我们的课程比较宽容，这样也是被允许的——</p>
 <div class="note note-info">
-            <p>在我们类Unix环境下应当使用：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-comment">// ...</span><br>system(<span class="hljs-string">&quot;clear&quot;</span>);<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+            <p>在我们类Unix环境下应当使用：</p><div class="code-wrapper"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-comment">// ...</span>
+system(<span class="hljs-string">&quot;clear&quot;</span>);
+<span class="hljs-comment">// ...</span></code></pre></div>
           </div>
 
 <p>当然，这次构建可以通过了，最后到了TA那里——</p>

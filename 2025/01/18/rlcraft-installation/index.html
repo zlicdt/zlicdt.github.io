@@ -307,14 +307,20 @@
 <p>然后，因为1.21.2是一个古老的版本，不能使用比较新的JRE（经测试17已经不能成功启动，未测试11）</p>
 <p>所以我们只得使用 Java 8，相信JAVA_HOME的切换对于本站的读者已经不是难事。</p>
 <p>对于Arch Linux，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -S jre8-openjdk<br>sudo archlinux-java <span class="hljs-built_in">set</span> java-8-openjdk/jre<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo pacman -S jre8-openjdk
+sudo archlinux-java <span class="hljs-built_in">set</span> java-8-openjdk/jre</code></pre></div>
 
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>我们新建一个文件夹作为服务器的root directory，在这里我将其命名为<code>rlcraft</code></p>
 <p>之后将Forge installer和RLCraft压缩包放入其中，再解压RLCraft的压缩包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">❯ <span class="hljs-built_in">ls</span><br> config                                                   optionsof.txt  <span class="hljs-string">&#x27;RLCraft Server Pack 1.12.2 - Release v2.9.3.zip&#x27;</span>   scripts<br> forge-1.12.2-14.23.5.2860-installer.jar                  options.txt    <span class="hljs-string">&#x27;RLCraft v2.9.1c Changelog.txt&#x27;</span>                     server.properties<br><span class="hljs-string">&#x27;FOR SERVERS ONLY - SET THESE IN SERVER.PROPERTIES.txt&#x27;</span>   resourcepacks  <span class="hljs-string">&#x27;RLCraft v2.9.3 + v2.9.2d Changelog.txt&#x27;</span>            structures<br> mods                                                     resources      <span class="hljs-string">&#x27;RLCraft v2.9 Changelog.txt&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">❯ <span class="hljs-built_in">ls</span>
+ config                                                   optionsof.txt  <span class="hljs-string">&#x27;RLCraft Server Pack 1.12.2 - Release v2.9.3.zip&#x27;</span>   scripts
+ forge-1.12.2-14.23.5.2860-installer.jar                  options.txt    <span class="hljs-string">&#x27;RLCraft v2.9.1c Changelog.txt&#x27;</span>                     server.properties
+<span class="hljs-string">&#x27;FOR SERVERS ONLY - SET THESE IN SERVER.PROPERTIES.txt&#x27;</span>   resourcepacks  <span class="hljs-string">&#x27;RLCraft v2.9.3 + v2.9.2d Changelog.txt&#x27;</span>            structures
+ mods                                                     resources      <span class="hljs-string">&#x27;RLCraft v2.9 Changelog.txt&#x27;</span>
+</code></pre></div>
 
 <p>安装Forge</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">java -jar forge-1.12.2-14.23.5.2860-installer.jar --installServer</code></pre></div>
 <p>因为大陆的网络可能不好，所以Headless服务器推荐V2rayA，archcn源已收录</p>
 <h1 id="启动！"><a href="#启动！" class="headerlink" title="启动！"></a>启动！</h1><p>相信本站的读者都已经有过开原版服的经历了，对后续的内容一定轻车熟路</p>
 <p>修改server.properties和eula.txt</p>

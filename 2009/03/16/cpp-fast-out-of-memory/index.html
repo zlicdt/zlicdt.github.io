@@ -301,7 +301,15 @@
                 
                 <p>节约内存，请（（</p>
 <span id="more"></span>
-<h2 id="Codes"><a href="#Codes" class="headerlink" title="Codes"></a>Codes</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">nya</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        <span class="hljs-type">int</span>* ptr = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-built_in">nya</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Codes"><a href="#Codes" class="headerlink" title="Codes"></a>Codes</h2><div class="code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">nya</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;
+        <span class="hljs-type">int</span>* ptr = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>;
+    &#125;
+&#125;
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">nya</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>反复创建新指针并分配一些内存空间。由于 <code>while(true)</code> 是无限循环的，内存会很快被填满。</strong></p>
 <div class="note note-warning">
             <p>由于这个程序会占满内存，不会自动<code>kill</code>进程的操作系统（如Windows、macOS）将使用<code>swap</code>进行内存交换。<br>这可能导致大量写入磁盘！<br>在Windows上，它会导致系统不稳定甚至出现黑屏。在严重情况下，未保存的数据可能会丢失并且可能出现蓝屏。请确保在运行此程序之前已保存所有数据。</p>

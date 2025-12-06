@@ -332,80 +332,96 @@
 <h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><ol>
 <li>Debian&#x2F;Ubuntu:</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br>sudo apt install git<br><span class="hljs-comment"># 然后看提示，按Y键、回车</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo apt update
+sudo apt install git
+<span class="hljs-comment"># 然后看提示，按Y键、回车</span></code></pre></div>
 <ol start="2">
 <li>RHEL&#x2F;Rocky Linux&#x2F;Alma Linux&#x2F;CentOS&#x2F;Fedora</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo dnf up<br>sudo dnf <span class="hljs-keyword">in</span> git<br><span class="hljs-comment"># 如果无法正常运行，可能是版本太老，请使用以下命令</span><br>sudo yum update<br>sudo yum install git<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo dnf up
+sudo dnf <span class="hljs-keyword">in</span> git
+<span class="hljs-comment"># 如果无法正常运行，可能是版本太老，请使用以下命令</span>
+sudo yum update
+sudo yum install git</code></pre></div>
 <ol start="3">
 <li>Arch Linux&#x2F;Manjaro</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -Sy<br>sudo pacman -S git<br><span class="hljs-comment"># 回车</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo pacman -Sy
+sudo pacman -S git
+<span class="hljs-comment"># 回车</span></code></pre></div>
 <ol start="4">
 <li>openSUSE&#x2F;SLE</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo zypper up<br>sudo zypper <span class="hljs-keyword">in</span> git<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo zypper up
+sudo zypper <span class="hljs-keyword">in</span> git</code></pre></div>
 <ol start="5">
 <li>Gentoo Linux</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo emerge -a dev-vcs/git<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo emerge -a dev-vcs/git</code></pre></div>
 
 <p>之后执行<code>git --version</code>：<br>如果有以下输出，安装就完成了：<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2016.24.34.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h3><p>当然这需要新的macOS版本；<br>如果你还在用Catalina，请务必更新。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs zsh">xcode-select --install<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs zsh">xcode-select --install</code></pre></div>
 <p>这样，执行：<code>git --version</code><br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2016.41.31.png" srcset="/img/loading.gif" lazyload><br>就对了。</p>
 <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><ol>
 <li>如果是Windows 11并且使用了魔法，那么你大概是可以使用<code>winget</code>的。这是很方便的。<br>按<code>Win + R</code>输入<code>powershell</code>，</li>
 </ol>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">winget install --id Git.Git -e --source winget<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs cmd">winget install --id Git.Git -e --source winget</code></pre></div>
 <p>即可。</p>
 <ol start="2">
 <li>如果不幸的事，你不喜欢更新，在使用老掉牙的1803版Windows 10，或者不能使用魔法：<br>从 <a target="_blank" rel="noopener" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> 下载适应你OS的版本。<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2016.52.01.png" srcset="/img/loading.gif" lazyload><br>一般人下载第二个就可，之后一路无脑Next。</li>
 </ol>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>你新建了一个文件夹，你将在里面放置你要管理的文件（或者已经放置了）<br>如何让Git管理它呢？使用下面命令即可让Git接管它。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git init</code></pre></div>
 <p><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2017.04.03.png" srcset="/img/loading.gif" lazyload><br>现在，目录下多了一个.git文件夹，它就是负责存放Git的配置文件以及相关版本数据的。</p>
 <h3 id="添加文件到仓库"><a href="#添加文件到仓库" class="headerlink" title="添加文件到仓库"></a>添加文件到仓库</h3><p>我们现在添加一个文件<code>test</code>进去，它的内容是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">This is a test file.<br>Now, its version is:<br>    1<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs text">This is a test file.
+Now, its version is:
+    1</code></pre></div>
 <p>记住现在它的版本是1。<br>如果你在使用一些“花里胡哨”的shell插件，比如omz，你会发现：<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2017.10.01.png" srcset="/img/loading.gif" lazyload><br>Git发现有一个文件被更改了。<br>这时候它还没有把这个文件记录在案，我们需要这样<strong>把一个文件加入仓库</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git add <span class="hljs-built_in">test</span></code></pre></div>
 <p><code>test</code>文件就被加入仓库了。<br>如果那你想把目录下的<strong>全部文件加入仓库</strong>，执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git add .</code></pre></div>
 <p>这样全部文件都会加进来。</p>
 <h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p>好的，你的这份作业已经写好，正准备交给老师。<br>现在我们需要把这堆文件记录成一个版本，也就是<strong>提交</strong>动作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;Version 1！加入test文件&quot;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&quot;Version 1！加入test文件&quot;</span></code></pre></div>
 <p>后面的<code>-m</code>参数是必加不可的，它是用来描述这个版本大概是做了什么的。<br>这两个引号，必须是英文的。<br>当然随便写命令也可以执行成功，但是不建议这么做。<br>因为到后面你可能看不懂这个版本是干什么的。</p>
 <p>这样这个版本就被存储了下来。</p>
 <h3 id="修改与回档（版本回退）"><a href="#修改与回档（版本回退）" class="headerlink" title="修改与回档（版本回退）"></a>修改与回档（版本回退）</h3><p>不幸，老师不认可你这份作业。你需要改进它，于是你修改<code>test</code>文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-string">&#x27;s/1/2/g&#x27;</span> <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-string">&#x27;s/1/2/g&#x27;</span> <span class="hljs-built_in">test</span></code></pre></div>
 <p>这个属于sed替换文本，看不懂无视就好。</p>
 <p>现在<code>test</code>文件已经是第二版了！<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2017.33.31.png" srcset="/img/loading.gif" lazyload><br>现在我们可以看到，我们的文件内容中的“1”变成了“2”，同时Git也发现了这个文件更改。<br>好了，我们再重复上一步提交。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git add .<br>git commit -m <span class="hljs-string">&quot;Version 2！修改test文件&quot;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git add .
+git commit -m <span class="hljs-string">&quot;Version 2！修改test文件&quot;</span></code></pre></div>
 <p>老师看了一下，原来他的不认可是来自于一个拼写错误：it’s &#x3D;&gt; its，并非不满意那个版本号。<br>看来并不需要修改版本号，只需要修改拼写错误就行。</p>
 <div class="note note-info">
             <p>有同学会觉得这是小题大做了，我只修改个版本号为什么要用Git回退，直接改一下不就行了么？</p><p>我这里只是在演示功能。如果你写一些大的工程，很多地方的语句&amp;调用函数等可能经过比较大程度的修改甚至覆盖。<br>这样做可以完全回到原来的状态。</p>
           </div>
 <p>Git用HEAD表示当前的版本。前一个版本就是HEAD^，前两个版本就是HEAD^^。<br>往前100个版本可以写100个^，但是这肯定是不易数的，所以可以写成HEAD~100。</p>
 <p>我们往前退一个版本，而且要回到前一个版本的已提交状态，所以我们：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset --hard HEAD^<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git reset --hard HEAD^</code></pre></div>
 <p>现在查看下<code>test</code>文件的内容：<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2017.53.55.png" srcset="/img/loading.gif" lazyload><br><code>--hard</code>参数会回退到上个版本的已提交状态，<code>--soft</code>会回退到上个版本的未提交状态，<code>--mixed</code>会回退到上个版本已添加但未提交的状态。</p>
 <p>然后你修改文件再提交：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-string">&quot;s/its/it&#x27;s/g&quot;</span> <span class="hljs-built_in">test</span><br>git add .<br>git commit -m <span class="hljs-string">&quot;Commit 2: fix spell issue.&quot;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-string">&quot;s/its/it&#x27;s/g&quot;</span> <span class="hljs-built_in">test</span>
+git add .
+git commit -m <span class="hljs-string">&quot;Commit 2: fix spell issue.&quot;</span></code></pre></div>
 
 <p>你可能觉得写<code>HEAD^</code>的方法过于笨拙，当然还有一种方法可以解决：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span></code></pre></div>
 <p><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2018.17.22.png" srcset="/img/loading.gif" lazyload><br>当然在这里，你的commit id和我的不会一样。<br>之后，如果你想回到哪个版本，就：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset --hard 版本commit <span class="hljs-built_in">id</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git reset --hard 版本commit <span class="hljs-built_in">id</span></code></pre></div>
 <p>这里的commit id不需要写全，当然写一两个字母也不行。主要是让Git分辨出来特定版本，又不与别的版本混淆就行。<br>比如前6个字符大概就可。</p>
 <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>你可能听说过一些平台，比如 Github, Gitlab等，这些都是Git远程仓库平台。<br>那么，如何使用这些远程仓库呢？</p>
 <h3 id="Clone（克隆）"><a href="#Clone（克隆）" class="headerlink" title="Clone（克隆）"></a>Clone（克隆）</h3><p>没错，命令就是<code>git clone</code>。<br>后面接链接与本地目标目录。<br>比如，从Github克隆Linux内核的仓库到当前用户主目录下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/torvalds/linux.git ~/linux<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/torvalds/linux.git ~/linux</code></pre></div>
 <p>这后面名字可以自己起，但是建议维持原名，最多只在其基础上加点东西。<br>现在，远程的目录就被1:1复刻到你这里来了。</p>
 <h3 id="Pull（拉取）"><a href="#Pull（拉取）" class="headerlink" title="Pull（拉取）"></a>Pull（拉取）</h3><p>过了一段时间，Linux内核源码的仓库更新了，而你的仓库还是旧版本，这时候该如何同步？<br>切换到仓库目录下，运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git pull</code></pre></div>
 <p>这样仓库就会更新了。</p>
 <h3 id="Push（推送）"><a href="#Push（推送）" class="headerlink" title="Push（推送）"></a>Push（推送）</h3><p>显然，Linux内核源码仓库是很严格的，只有官方人员才能提交代码。<br>所以，我们自己创建一个Github仓库用于演示：<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2018.32.54.png" srcset="/img/loading.gif" lazyload><br>创建之后，是这样的：<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2018.33.21.png" srcset="/img/loading.gif" lazyload><br>你看它下面都写出来了，如何给本地仓库设置远程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin https://github.com/zlicdt/Test.git<br>git branch -M main<br>git push -u origin main<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git remote add origin https://github.com/zlicdt/Test.git
+git branch -M main
+git push -u origin main</code></pre></div>
 <p>这样，远程仓库这辈子就有了。<br><img src="/../img/git-guide/%E6%88%AA%E5%B1%8F2024-08-21%2018.36.04.png" srcset="/img/loading.gif" lazyload><br>（请忽略我用老邮箱进行提交导致的头像变动</p>
 <h3 id="另请注意"><a href="#另请注意" class="headerlink" title="另请注意"></a>另请注意</h3><p>Github应该是在很久以前（似乎是2020-2021年间）禁止了只使用用户名+邮箱进行的提交。<br>我们可能遇到相关提示，并且有一大堆很麻烦的操作。<br>表面上是为了安全，实际上却是安全了，但更多的是推自家的github-cli，它可以概括为让你在CLI登录Github账号，从而正常进行推送。<br>建议都装一个。</p>
 <h2 id="更新中，敬请期待……"><a href="#更新中，敬请期待……" class="headerlink" title="更新中，敬请期待……"></a>更新中，敬请期待……</h2>

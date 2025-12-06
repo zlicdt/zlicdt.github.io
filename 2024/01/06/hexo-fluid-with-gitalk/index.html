@@ -308,10 +308,21 @@
 <h2 id="建立用于存储评论的仓库"><a href="#建立用于存储评论的仓库" class="headerlink" title="建立用于存储评论的仓库"></a>建立用于存储评论的仓库</h2><p>因为是基于 issue，所以要开一个公共 github 存储库（已存在或创建一个新的 github 存储库）来开这些 issue<br><img src="/../img/hexo-fluid-with-gitalk/1.png" srcset="/img/loading.gif" lazyload><br>就像这个一样，是空的，只要是 public 的就行</p>
 <h2 id="创建-GitHub-Application"><a href="#创建-GitHub-Application" class="headerlink" title="创建 GitHub Application"></a>创建 GitHub Application</h2><a class="btn" href="https://github.com/settings/applications/new"  target="_blank">点这申请</a>
 <p>然后这个像这样填就行<br><img src="/../img/hexo-fluid-with-gitalk/2.png" srcset="/img/loading.gif" lazyload><br>记得<code>xxxxx</code>要改啊</p>
-<h2 id="把主体用-npm-装上"><a href="#把主体用-npm-装上" class="headerlink" title="把主体用 npm 装上"></a>把主体用 npm 装上</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm i <span class="hljs-literal">--save</span> gitalk<br></code></pre></td></tr></table></figure>
+<h2 id="把主体用-npm-装上"><a href="#把主体用-npm-装上" class="headerlink" title="把主体用 npm 装上"></a>把主体用 npm 装上</h2><div class="code-wrapper"><pre><code class="hljs powershell">npm i <span class="hljs-literal">--save</span> gitalk</code></pre></div>
 
 <h1 id="嵌入"><a href="#嵌入" class="headerlink" title="嵌入"></a>嵌入</h1><p>然后回到<code>_config.yml</code><br>把</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post:</span><br>    <span class="hljs-attr">comments:</span><br>        <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>        <span class="hljs-attr">type:</span> <span class="hljs-string">gitalk</span><br><br><span class="hljs-attr">gitalk:</span><br>    <span class="hljs-attr">clientID:</span> <br>    <span class="hljs-attr">clentSecret:</span> <br>    <span class="hljs-attr">repo:</span> <span class="hljs-string">gitalk-comments</span><br>    <span class="hljs-attr">owner:</span> <span class="hljs-string">xxxxx</span><br>    <span class="hljs-attr">admin:</span> [<span class="hljs-string">&#x27;xxxxx&#x27;</span>]<br>    <span class="hljs-comment"># 都改成自己的，前两个就在申请完 Github Application 的页面，repo 按照你的评论存储仓库填，owner 和 admin 都改成你自己的用户名</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">post:</span>
+    <span class="hljs-attr">comments:</span>
+        <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>
+        <span class="hljs-attr">type:</span> <span class="hljs-string">gitalk</span>
+
+<span class="hljs-attr">gitalk:</span>
+    <span class="hljs-attr">clientID:</span> 
+    <span class="hljs-attr">clentSecret:</span> 
+    <span class="hljs-attr">repo:</span> <span class="hljs-string">gitalk-comments</span>
+    <span class="hljs-attr">owner:</span> <span class="hljs-string">xxxxx</span>
+    <span class="hljs-attr">admin:</span> [<span class="hljs-string">&#x27;xxxxx&#x27;</span>]
+    <span class="hljs-comment"># 都改成自己的，前两个就在申请完 Github Application 的页面，repo 按照你的评论存储仓库填，owner 和 admin 都改成你自己的用户名</span></code></pre></div>
 <p>然后重新<code>hexo d -g</code><br>这就完事了</p>
 
                 

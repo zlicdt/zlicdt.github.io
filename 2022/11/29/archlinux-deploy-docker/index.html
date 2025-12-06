@@ -312,27 +312,27 @@
 <li><code>root</code> 权限</li>
 </ul>
 <h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><ol>
-<li>通过 <code>pacman</code> 安装 <code>docker</code> 软件包 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -S docker<br></code></pre></td></tr></table></figure></li>
-<li>在系统启动时自动启动 <code>docker</code> 守护程序 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> docker<br></code></pre></td></tr></table></figure></li>
-<li>启动 <code>docker</code> 服务 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl start docker<br></code></pre></td></tr></table></figure></li>
-<li>加入能够使用 <code>docker</code> 守护程序的 <code>docker</code> 组 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo usermod -G docker -a <span class="hljs-variable">$USER</span><br></code></pre></td></tr></table></figure></li>
-<li>重新启动 <code>docker</code> 守护程序 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl restart docker<br></code></pre></td></tr></table></figure></li>
+<li>通过 <code>pacman</code> 安装 <code>docker</code> 软件包 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">sudo pacman -S docker</code></pre></div></li>
+<li>在系统启动时自动启动 <code>docker</code> 守护程序 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> docker</code></pre></div></li>
+<li>启动 <code>docker</code> 服务 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">sudo systemctl start docker</code></pre></div></li>
+<li>加入能够使用 <code>docker</code> 守护程序的 <code>docker</code> 组 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">sudo usermod -G docker -a <span class="hljs-variable">$USER</span></code></pre></div></li>
+<li>重新启动 <code>docker</code> 守护程序 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">sudo systemctl restart docker</code></pre></div></li>
 </ol>
 <hr>
 <h2 id="后续部分"><a href="#后续部分" class="headerlink" title="后续部分"></a>后续部分</h2><ol>
-<li>验证 <code>docker</code> 是否在运行 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker version<br></code></pre></td></tr></table></figure></li>
-<li>运行下面的命令将从 <code>dockerhub</code> 拉取并运行“Hello World” docker 容器 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run archlinux<br></code></pre></td></tr></table></figure></li>
+<li>验证 <code>docker</code> 是否在运行 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker version</code></pre></div></li>
+<li>运行下面的命令将从 <code>dockerhub</code> 拉取并运行“Hello World” docker 容器 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker run archlinux</code></pre></div></li>
 </ol>
 <h2 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h2><ol>
-<li>列出容器镜像 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+<li>列出容器镜像 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker image <span class="hljs-built_in">ls</span></code></pre></div>
  <img src="/../img/archlinux-deploy-docker/1.png" srcset="/img/loading.gif" lazyload></li>
-<li>列出所有容器 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker container <span class="hljs-built_in">ls</span> -a<br></code></pre></td></tr></table></figure>
+<li>列出所有容器 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker container <span class="hljs-built_in">ls</span> -a</code></pre></div>
  <img src="/../img/archlinux-deploy-docker/2.png" srcset="/img/loading.gif" lazyload></li>
-<li>删除容器 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker container <span class="hljs-built_in">rm</span> CONTAINER_NUMBER<br></code></pre></td></tr></table></figure>
+<li>删除容器 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker container <span class="hljs-built_in">rm</span> CONTAINER_NUMBER</code></pre></div>
  对于这个 <code>CONTAINER_NUMBER</code>，也支持简写。</li>
-<li>删除镜像 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker image <span class="hljs-built_in">rm</span> -f IMAGE_NUMBER<br></code></pre></td></tr></table></figure>
+<li>删除镜像 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker image <span class="hljs-built_in">rm</span> -f IMAGE_NUMBER</code></pre></div>
  这个 <code>IMAGE_NUMBER</code> 也支持简写。</li>
-<li>启动 <code>Linux</code> 镜像并进行 <code>chroot</code> 进入 -&gt; <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -it --name arch-test archlinux<br></code></pre></td></tr></table></figure>
+<li>启动 <code>Linux</code> 镜像并进行 <code>chroot</code> 进入 -&gt; <div class="code-wrapper"><pre><code class="hljs bash">docker run -it --name arch-test archlinux</code></pre></div>
  这个命令是创建一个名为 <code>arch-test</code> 的容器，使用 <code>archlinux</code> 镜像作为模板并进行 <code>chroot</code> 进入。<br> <img src="/../img/archlinux-deploy-docker/3.png" srcset="/img/loading.gif" lazyload><br> 使用 <code>docker ps</code> 命令查看容器信息。<br> <img src="/../img/archlinux-deploy-docker/4.png" srcset="/img/loading.gif" lazyload></li>
 </ol>
 

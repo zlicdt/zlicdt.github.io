@@ -333,7 +333,7 @@
 <p>虽然这个用户不在 sudoers 里，但是仍然可以使用 su 切换到其他用户，然而那些用户也是低安全性的密码，并且有高的权限。</p>
 <p>我倒是不担心我的虚拟局域网中的设备被攻击者通过 ssh 登录，因为全部都是禁止密码登录的，那些苹果设备也是不启动 sshd 的。</p>
 <p>所以：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> o-x /usr/bin/su<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> o-x /usr/bin/su</code></pre></div>
 
 <p>我们直接阻止了非 root 用户执行 su，这样就避免了攻击者使用 su 切换到高权限用户。</p>
 

@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          521 字
+          520 字
         
       </span>
     
@@ -310,9 +310,32 @@
 <p>于是在群里，我找到了一个被推荐的新型高性能文本编辑器——Zed。</p>
 <p>因为姐姐大人没有在“为了维持「性状稳定」”而做出对于文本编辑器的规定，我的尝试是正确的。</p>
 <p>于是，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -Si zed<br>sudo pacman -S zed<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">pacman -Si zed
+sudo pacman -S zed</code></pre></div>
 <p>调查了相关信息，</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs text">软件库         : extra<br>名字           : zed<br>版本           : 0.210.4-1<br>描述           : A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter<br>架构           : x86_64<br>URL            : https://zed.dev<br>软件许可       : GPL-3.0-or-later  AGPL-3.0-or-later  Apache-2.0<br>组             : 无<br>提供           : 无<br>依赖于         : alsa-lib  libasound.so=2-64  curl  libcurl.so  fontconfig  gcc-libs  glibc  libxcb  libxkbcommon  libxkbcommon-x11  nodejs&gt;=18  netcat  npm<br>                 openssl  libcrypto.so  libssl.so  sqlite  vulkan-driver  vulkan-icd-loader  vulkan-tools  wayland  zlib  libz.so=1-64  zstd  libzstd.so<br>可选依赖       : clang: improved C/C++ language support<br>                 eslint: improved Javascript language support<br>                 pyright: improved Python language support<br>                 rust-analyzer: improved Rust language support<br>                 org.freedesktop.secrets: to keep you logged into your Zed account<br>与它冲突       : 无<br>取代           : zed-editor<br>下载大小       : 76.64 MiB<br>安装后大小     : 316.05 MiB<br>打包者         : Caleb Maclennan &lt;alerque@archlinux.org&gt;<br>编译日期       : 2025年10月29日 星期三 13时03分58秒<br>验证者         : SHA-256 校验值  数字签名<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs text">软件库         : extra
+名字           : zed
+版本           : 0.210.4-1
+描述           : A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+架构           : x86_64
+URL            : https://zed.dev
+软件许可       : GPL-3.0-or-later  AGPL-3.0-or-later  Apache-2.0
+组             : 无
+提供           : 无
+依赖于         : alsa-lib  libasound.so=2-64  curl  libcurl.so  fontconfig  gcc-libs  glibc  libxcb  libxkbcommon  libxkbcommon-x11  nodejs&gt;=18  netcat  npm
+                 openssl  libcrypto.so  libssl.so  sqlite  vulkan-driver  vulkan-icd-loader  vulkan-tools  wayland  zlib  libz.so=1-64  zstd  libzstd.so
+可选依赖       : clang: improved C/C++ language support
+                 eslint: improved Javascript language support
+                 pyright: improved Python language support
+                 rust-analyzer: improved Rust language support
+                 org.freedesktop.secrets: to keep you logged into your Zed account
+与它冲突       : 无
+取代           : zed-editor
+下载大小       : 76.64 MiB
+安装后大小     : 316.05 MiB
+打包者         : Caleb Maclennan &lt;alerque@archlinux.org&gt;
+编译日期       : 2025年10月29日 星期三 13时03分58秒
+验证者         : SHA-256 校验值  数字签名</code></pre></div>
 <p>看起来，这是一个已经包含在<code>extra</code>源中的一个开源软件，使用AGPL许可证。网站是<code>zed.dev</code>，使用Vulkan，有声音输出的奇怪包。</p>
 <p>Optional dependencies中有用于代码检查、高亮的上游组件。</p>
 <p>安装的可执行文件名为<code>zeditor</code>。</p>

@@ -331,7 +331,18 @@
 <ol start="2">
 <li>堆序性：父节点必须小于或等于子节点（最小堆）<br>子节点的数值必须大于父节点的数值，这样的最小值永远在根节点（顶端）。</li>
 </ol>
-<h2 id="insert"><a href="#insert" class="headerlink" title="insert()"></a>insert()</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">insert(x)<br>1. IF ISFULL(A)<br>2.       return False // 检查是不是满了，插不进去了<br>3.   // percolate up<br>4.   hole = size++ // 在末尾挖一个洞，先赋值再自增<br>5.   WHILE hole &gt; 0 AND x &lt; A[(hole-1)/2]<br>            // hole = 0，到根了不能上升<br>            // x &lt; A[(hole-1)/2]子节点小于父节点，交换父节点和hole<br>6.         A[hole] = A[(hole-1)/2]<br>           hole = (hole-1)/2<br>7.   A[hole] = x<br>8.   return True<br></code></pre></td></tr></table></figure>
+<h2 id="insert"><a href="#insert" class="headerlink" title="insert()"></a>insert()</h2><div class="code-wrapper"><pre><code class="hljs text">insert(x)
+1. IF ISFULL(A)
+2.       return False // 检查是不是满了，插不进去了
+3.   // percolate up
+4.   hole = size++ // 在末尾挖一个洞，先赋值再自增
+5.   WHILE hole &gt; 0 AND x &lt; A[(hole-1)/2]
+            // hole = 0，到根了不能上升
+            // x &lt; A[(hole-1)/2]子节点小于父节点，交换父节点和hole
+6.         A[hole] = A[(hole-1)/2]
+           hole = (hole-1)/2
+7.   A[hole] = x
+8.   return True</code></pre></div>
 <p>解释关键变量：</p>
 <ul>
 <li><p><code>hole</code>：当前“洞”的位置（用来“挖坑”往上走）</p>
@@ -340,15 +351,44 @@
 </li>
 </ul>
 <p>不用担心，因为既然<code>hole</code>能到这个位置，那么之前的数据都窜下去了，给父节点赋到子节点不会丢失内容。</p>
-<h2 id="deleteMin"><a href="#deleteMin" class="headerlink" title="deleteMin()"></a>deleteMin()</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs text">deleteMin()<br>1. IF ISEMPTY(A)<br>2.       return -1 // 空了不能删<br>3.   min = A[0], hole = 0, x = A[--size]<br>    // 删掉的最小值要返回，然后给hole设成这个位置，移动hole<br>    // size-1是最后一个元素的下标，x = 最后一个元素的值<br>4.   // percolate down<br>5.   WHILE A[hole] has children<br>        // 用2*hole+1和size比较<br>        // 注意如果2*hole+2没有东西了的情况，sid直接为2*hole+1<br>6.        sid = index of A[hole]’s smaller child<br>7.        IF x &lt;= A[sid]<br>8.              BREAK<br>        // 如果hole往下降到正确的位置，停止下降<br>9.        A[hole] = A[sid]<br>10.       hole = sid<br>11.  A[hole] = x<br>12.  return min<br></code></pre></td></tr></table></figure>
+<h2 id="deleteMin"><a href="#deleteMin" class="headerlink" title="deleteMin()"></a>deleteMin()</h2><div class="code-wrapper"><pre><code class="hljs text">deleteMin()
+1. IF ISEMPTY(A)
+2.       return -1 // 空了不能删
+3.   min = A[0], hole = 0, x = A[--size]
+    // 删掉的最小值要返回，然后给hole设成这个位置，移动hole
+    // size-1是最后一个元素的下标，x = 最后一个元素的值
+4.   // percolate down
+5.   WHILE A[hole] has children
+        // 用2*hole+1和size比较
+        // 注意如果2*hole+2没有东西了的情况，sid直接为2*hole+1
+6.        sid = index of A[hole]’s smaller child
+7.        IF x &lt;= A[sid]
+8.              BREAK
+        // 如果hole往下降到正确的位置，停止下降
+9.        A[hole] = A[sid]
+10.       hole = sid
+11.  A[hole] = x
+12.  return min</code></pre></div>
 <p>关键变量解释：<br><code>sid</code>: 实际上循环是 <code>while ((2*hole+1) &lt; size)</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> ((<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>) &gt;= size) &#123;<br>    bid = <span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>; <span class="hljs-comment">// Only left child exists</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    bid = (A[<span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>] &lt; A[<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>] ? (<span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>) : (<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>)); <span class="hljs-comment">// Select smaller child</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">if</span> ((<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>) &gt;= size) &#123;
+    bid = <span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>; <span class="hljs-comment">// Only left child exists</span>
+&#125; <span class="hljs-keyword">else</span> &#123;
+    bid = (A[<span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>] &lt; A[<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>] ? (<span class="hljs-number">2</span>*hole+<span class="hljs-number">1</span>) : (<span class="hljs-number">2</span>*hole+<span class="hljs-number">2</span>)); <span class="hljs-comment">// Select smaller child</span>
+&#125;</code></pre></div>
 
 <h2 id="heapSort"><a href="#heapSort" class="headerlink" title="heapSort()"></a>heapSort()</h2><p>我们不需要多余的空间来进行排序，一个数组中：<br><img src="/../img/algorithm-heap/image.png" srcset="/img/loading.gif" lazyload><br><img src="/../img/algorithm-heap/image%20copy.png" srcset="/img/loading.gif" lazyload></p>
 <p>直接给他们归成MaxHeap的形式，来存档。</p>
 <p>MaxHeap就是给MinHeap反过来。<code>insert</code>的过程，将第5步的<code>&lt;</code>换为<code>&gt;</code>即可。<code>deleteMin</code>换为<code>deleteMax</code>，然后更换<code>sid</code>为<code>bid</code>，就是给<code>bid</code>赋值过程的判断反向，<code>BREAK</code>也换为<code>&gt;=</code>。</p>
 <p>存进去，倒着<code>deleteMax</code>出来，……</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">heapSort</span><span class="hljs-params">(<span class="hljs-type">int</span> A[])</span> &#123;<br>	<span class="hljs-type">MaxHeap</span> <span class="hljs-variable">heap</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MaxHeap</span>(A); <span class="hljs-comment">// Heap backed by same array</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : A) &#123;<br>		heap.insert(x); <span class="hljs-comment">// Build heap one value at a time</span><br>	&#125;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> (heap.size - <span class="hljs-number">1</span>); i &gt; <span class="hljs-number">0</span>; i--) &#123;<br>		A[i] = heap.deleteMax(); <span class="hljs-comment">// Pull max into sorted suffix</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">heapSort</span><span class="hljs-params">(<span class="hljs-type">int</span> A[])</span> &#123;
+	<span class="hljs-type">MaxHeap</span> <span class="hljs-variable">heap</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MaxHeap</span>(A); <span class="hljs-comment">// Heap backed by same array</span>
+	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> x : A) &#123;
+		heap.insert(x); <span class="hljs-comment">// Build heap one value at a time</span>
+	&#125;
+	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> (heap.size - <span class="hljs-number">1</span>); i &gt; <span class="hljs-number">0</span>; i--) &#123;
+		A[i] = heap.deleteMax(); <span class="hljs-comment">// Pull max into sorted suffix</span>
+    &#125;
+&#125;</code></pre></div>
                 
               </div>
             

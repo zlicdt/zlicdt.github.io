@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          699 字
+          698 字
         
       </span>
     
@@ -320,25 +320,30 @@
 </li>
 </ol>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>转发的方式非常简单。只要能 ssh 连上远程的机器，就可以进行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -L &lt;本地端口&gt;:&lt;目标主机&gt;:&lt;目标端口&gt; &lt;SSH服务器用户&gt;@&lt;SSH服务器地址&gt;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">ssh -L &lt;本地端口&gt;:&lt;目标主机&gt;:&lt;目标端口&gt; &lt;SSH服务器用户&gt;@&lt;SSH服务器地址&gt;</code></pre></div>
 
 <p>如上面的第二个例子，我需要将远程的7102转到本地的7102端口上，那么：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在这里使用 Tailscale.</span><br>ssh -L 7102:localhost:7102 100.114.51.4<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 在这里使用 Tailscale.</span>
+ssh -L 7102:localhost:7102 100.114.51.4</code></pre></div>
 <blockquote>
 <p>如果端口号小于1024，是一个已知端口，需要高权限才能创建转发。使用 root 权限</p>
 </blockquote>
 <p>远程的用户必须具有使用 ssh 命令的能力，所以 login shell 不能是 nologin.</p>
 <p>如果你使用某些共享 ip 的 frps，这些路子比较多日后再讨论。不过提供参考：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -L 7102:localhost:7102 -p 11451 frp-homo.lab<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">ssh -L 7102:localhost:7102 -p 11451 frp-homo.lab</code></pre></div>
 <p>区别就是加入了指定端口。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">tcp 流量 -&gt; remote -&gt; frpc -&gt; frps in port -&gt; frps out port -&gt; host -&gt; host some port<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs text">tcp 流量 -&gt; remote -&gt; frpc -&gt; frps in port -&gt; frps out port -&gt; host -&gt; host some port</code></pre></div>
 
 <h2 id="多重转发"><a href="#多重转发" class="headerlink" title="多重转发"></a>多重转发</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这里也是在上文中使用 natfrp launcher 的过程中发生的事。</p>
 <p>我有一台机器(A)有 Tailscale，另一台(B)没有。<br>A 是 headless 机器，我不能直接转发在它上面使用浏览器，也不能在 B 上使用浏览器访问这台机器的7102，因为 B 的 ip 不是 127.0.0.1（废话！）</p>
 <p>假设 A : 192.168.114.51</p>
 <h3 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h3><p>既然 remote 的7102被映射到了 A 的7102上，那么我们可以把 A 的7102再映射到 B 的7102上（实际，不一定要7102）。</p>
 <p>在 ssh -L 执行时，会进入 shell 已经是最基础的了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">zlicdt@B $ ssh -L 7102:localhost:7102 192.168.114.51<br><br>zlicdt@A $ ssh -L 7102:localhost:7102 100.114.51.4<br><br>zlicdt@frpc $<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">zlicdt@B $ ssh -L 7102:localhost:7102 192.168.114.51
+
+zlicdt@A $ ssh -L 7102:localhost:7102 100.114.51.4
+
+zlicdt@frpc $</code></pre></div>
 
 <p>这样，remote 的7102开的 control panel 会认为是从 localhost 来的流量，也就会放行了。</p>
 

@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          805 字
+          803 字
         
       </span>
     
@@ -306,16 +306,28 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/zlicdt/vim-configure">Github repo link</a></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我有从Arch Linux &amp; Hyprland用回来macOS。<br>这边的预装Vim过于老旧，还没有vimrc，导致它是一个没有缩进、没有语法高亮，类似Debian系Vim的vi模式。<br>我在Arch那边有好好配置Vim，所以要对macOS这边也进行同步了，但是这边就会比Linux上繁琐一些，也是没办法的……<br><img src="/../img/vim-configure/screenshot.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="插件管理器-Vundle"><a href="#插件管理器-Vundle" class="headerlink" title="插件管理器 Vundle"></a>插件管理器 Vundle</h2><p><a target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">Project Repo link</a><br>我们需要使用Vundle来安装插件，所以先</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></pre></div>
 <p>然后把如下的内容加入<code>~/.vimrc</code>中</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">set</span> nocompatible              <span class="hljs-comment">&quot; be iMproved, required</span><br><span class="hljs-keyword">filetype</span> off                  <span class="hljs-comment">&quot; required</span><br><br><span class="hljs-comment">&quot; set the runtime path to include Vundle and initialize</span><br><span class="hljs-keyword">set</span> rtp+=~/.<span class="hljs-keyword">vim</span>/bundle/Vundle.<span class="hljs-keyword">vim</span><br><span class="hljs-keyword">call</span> vundle#begin()<br><br><span class="hljs-comment">&quot; let Vundle manage Vundle, required</span><br>Plugin <span class="hljs-string">&#x27;VundleVim/Vundle.vim&#x27;</span><br><br><span class="hljs-comment">&quot; All of your Plugins must be added before the following line</span><br><span class="hljs-keyword">call</span> vundle#end()            <span class="hljs-comment">&quot; required</span><br><span class="hljs-keyword">filetype</span> plugin <span class="hljs-built_in">indent</span> <span class="hljs-keyword">on</span>    <span class="hljs-comment">&quot; required</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs vim"><span class="hljs-keyword">set</span> nocompatible              <span class="hljs-comment">&quot; be iMproved, required</span>
+<span class="hljs-keyword">filetype</span> off                  <span class="hljs-comment">&quot; required</span>
+
+<span class="hljs-comment">&quot; set the runtime path to include Vundle and initialize</span>
+<span class="hljs-keyword">set</span> rtp+=~/.<span class="hljs-keyword">vim</span>/bundle/Vundle.<span class="hljs-keyword">vim</span>
+<span class="hljs-keyword">call</span> vundle#begin()
+
+<span class="hljs-comment">&quot; let Vundle manage Vundle, required</span>
+Plugin <span class="hljs-string">&#x27;VundleVim/Vundle.vim&#x27;</span>
+
+<span class="hljs-comment">&quot; All of your Plugins must be added before the following line</span>
+<span class="hljs-keyword">call</span> vundle#end()            <span class="hljs-comment">&quot; required</span>
+<span class="hljs-keyword">filetype</span> plugin <span class="hljs-built_in">indent</span> <span class="hljs-keyword">on</span>    <span class="hljs-comment">&quot; required</span></code></pre></div>
 <p>这里不要直接复制原仓库的README！那里后边的内容都是示例<br>然后打开vim，输入<code>:PluginInstall</code>，Vundle就安装了</p>
 <h2 id="自动补全-YouCompleteMe"><a href="#自动补全-YouCompleteMe" class="headerlink" title="自动补全 YouCompleteMe"></a>自动补全 YouCompleteMe</h2><p><a target="_blank" rel="noopener" href="https://github.com/ycm-core/YouCompleteMe">Project Repo Link</a><br>你可能注意到，仓库README里写了YCM需要vim构建为有Python 3支持的，但是macOS随附的vim是不带的，所以要再装一个。<br>YCM的补全功能并非是用脚本实现的，也不是预编译的，所以需要自己构建，要求cmake和启用的语言支持的相关依赖。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install vim cmake<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">brew install vim cmake</code></pre></div>
 <p>之后可以安装YCM文件了，打开<code>~/.vimrc</code>，在<code>Plugin &#39;VundleVim/Vundle.vim&#39;</code>下方加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;ycm-core/YouCompleteMe&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;ycm-core/YouCompleteMe&#x27;</span></code></pre></div>
 <p>之后退出vim，再启动，输入<code>:PluginInstall</code><br>现在可以构建YCM了，切到YCM的目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.vim/bundle/YouCompleteMe<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.vim/bundle/YouCompleteMe</code></pre></div>
 <p>YCM的构建脚本，语言支持参数通常都是<code>--xxx-completer</code>格式，详情参见原仓库的README，并按需求使用</p>
 <h3 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h3><p>这样的话，大家已经在<code>xcode-select</code>那一步安装了足够的工具，现在Mac上有<code>clangd</code>来支持C family的语言补全了<br>按需启用功能，这是列表</p>
 <ul>
@@ -324,17 +336,28 @@
 <li>Go <code>--go-completer</code> require <code>golang</code></li>
 <li>JS&#x2F;TS <code>--ts-completer</code> require <code>nodejs</code><br>etc..<br>之后加上相关参数，进行构建，比如启用C&#x2F;C++ Rust JS&#x2F;TS的</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install.py --clangd-completer --rust-completer --ts-completer<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">./install.py --clangd-completer --rust-completer --ts-completer</code></pre></div>
 <p>也可以直接全开，不过我没有试过</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install.py --all<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">./install.py --all</code></pre></div>
 
 <h2 id="下横栏-Airline"><a href="#下横栏-Airline" class="headerlink" title="下横栏 Airline"></a>下横栏 Airline</h2><p><a target="_blank" rel="noopener" href="https://github.com/vim-airline/vim-airline">Project Repo Link</a><br>这是一个信息栏，可以显示当前模式、文件名、文件格式、编码、还有词数、位置等等<br>打开<code>~/.vimrc</code>，在<code>Plugin &#39;ycm-core/YouCompleteMe&#39;</code>下方加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline&#x27;</span><br>Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline-themes&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline&#x27;</span>
+Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline-themes&#x27;</span></code></pre></div>
 <p>之后退出vim，再启动，输入<code>:PluginInstall</code>，这次是安装Airline和它的theme<br>Airline中的部分主题、模式，可能需要nerd字体才能正常显示。我是用的是Meslo Nerd，可以通过<code>brew install font-meslo-lg-nerd-font</code>来安装。</p>
 <h2 id="Vim-后续设置"><a href="#Vim-后续设置" class="headerlink" title="Vim 后续设置"></a>Vim 后续设置</h2><p>我们统一一下主题，给vim的colorscheme换成catppuccin<br>打开<code>~/.vimrc</code>，在<code>Plugin &#39;vim-airline/vim-airline-themes&#39;</code>下方加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;catppuccin/nvim&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;catppuccin/nvim&#x27;</span></code></pre></div>
 <p>在这之后，因为macOS上的vimrc是空壳……所以我们只好自己开启一些功能</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-comment">&quot; Enable syntax highlighting</span><br><span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span><br><span class="hljs-comment">&quot; Enable line number</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">number</span><br><span class="hljs-comment">&quot; Set shiftwidth and tab to 4 spaces</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">sw</span>=<span class="hljs-number">4</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">ts</span>=<span class="hljs-number">4</span><br><span class="hljs-comment">&quot; Let search jump to the first match when typing</span><br><span class="hljs-keyword">set</span> incsearch<br><span class="hljs-keyword">colorscheme</span> catppuccin<br><span class="hljs-keyword">let</span> <span class="hljs-variable">g:airline_theme</span>=<span class="hljs-string">&#x27;catppuccin&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs vim"><span class="hljs-comment">&quot; Enable syntax highlighting</span>
+<span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span>
+<span class="hljs-comment">&quot; Enable line number</span>
+<span class="hljs-keyword">set</span> <span class="hljs-keyword">number</span>
+<span class="hljs-comment">&quot; Set shiftwidth and tab to 4 spaces</span>
+<span class="hljs-keyword">set</span> <span class="hljs-keyword">sw</span>=<span class="hljs-number">4</span>
+<span class="hljs-keyword">set</span> <span class="hljs-keyword">ts</span>=<span class="hljs-number">4</span>
+<span class="hljs-comment">&quot; Let search jump to the first match when typing</span>
+<span class="hljs-keyword">set</span> incsearch
+<span class="hljs-keyword">colorscheme</span> catppuccin
+<span class="hljs-keyword">let</span> <span class="hljs-variable">g:airline_theme</span>=<span class="hljs-string">&#x27;catppuccin&#x27;</span></code></pre></div>
 <p>这样就配置完成了。</p>
 <h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p>放假了，假期很长<br>这是我这一学期发的第一篇blog，总是感觉没什么写的<br>前几天折腾ZFS+Arch+Hyprland，好像有很多东西，但是却又感觉文本太长，也无法确实记录<br>最终只是一小部分，在Arch折腾完之后又回来macOS搞，最终得以记录<br>想找回之前的热情，尽量找回吧</p>
 
