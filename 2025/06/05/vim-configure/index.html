@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zlicdt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="进行了YCM + Airline的配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让Vim变得好看、顺手一些">
+<meta property="og:url" content="https://blog.zlicdt.top/2025/06/05/vim-configure/index.html">
+<meta property="og:site_name" content="zlicdt&#39;s blog">
+<meta property="og:description" content="进行了YCM + Airline的配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zlicdt.top/img/vim-configure/screenshot.png">
+<meta property="article:published_time" content="2025-06-05T08:31:13.000Z">
+<meta property="article:modified_time" content="2026-02-10T14:05:56.360Z">
+<meta property="article:author" content="zlicdt">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.zlicdt.top/img/vim-configure/screenshot.png">
+  
+  
+  
+  <title>让Vim变得好看、顺手一些 - zlicdt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.zlicdt.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="让Vim变得好看、顺手一些"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-05 08:31" pubdate>
+          2025年6月5日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          805 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">让Vim变得好看、顺手一些</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>进行了YCM + Airline的配置</p>
+<span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://github.com/zlicdt/vim-configure">Github repo link</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我有从Arch Linux &amp; Hyprland用回来macOS。<br>这边的预装Vim过于老旧，还没有vimrc，导致它是一个没有缩进、没有语法高亮，类似Debian系Vim的vi模式。<br>我在Arch那边有好好配置Vim，所以要对macOS这边也进行同步了，但是这边就会比Linux上繁琐一些，也是没办法的……<br><img src="/../img/vim-configure/screenshot.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="插件管理器-Vundle"><a href="#插件管理器-Vundle" class="headerlink" title="插件管理器 Vundle"></a>插件管理器 Vundle</h2><p><a target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">Project Repo link</a><br>我们需要使用Vundle来安装插件，所以先</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim<br></code></pre></td></tr></table></figure>
+<p>然后把如下的内容加入<code>~/.vimrc</code>中</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">set</span> nocompatible              <span class="hljs-comment">&quot; be iMproved, required</span><br><span class="hljs-keyword">filetype</span> off                  <span class="hljs-comment">&quot; required</span><br><br><span class="hljs-comment">&quot; set the runtime path to include Vundle and initialize</span><br><span class="hljs-keyword">set</span> rtp+=~/.<span class="hljs-keyword">vim</span>/bundle/Vundle.<span class="hljs-keyword">vim</span><br><span class="hljs-keyword">call</span> vundle#begin()<br><br><span class="hljs-comment">&quot; let Vundle manage Vundle, required</span><br>Plugin <span class="hljs-string">&#x27;VundleVim/Vundle.vim&#x27;</span><br><br><span class="hljs-comment">&quot; All of your Plugins must be added before the following line</span><br><span class="hljs-keyword">call</span> vundle#end()            <span class="hljs-comment">&quot; required</span><br><span class="hljs-keyword">filetype</span> plugin <span class="hljs-built_in">indent</span> <span class="hljs-keyword">on</span>    <span class="hljs-comment">&quot; required</span><br></code></pre></td></tr></table></figure>
+<p>这里不要直接复制原仓库的README！那里后边的内容都是示例<br>然后打开vim，输入<code>:PluginInstall</code>，Vundle就安装了</p>
+<h2 id="自动补全-YouCompleteMe"><a href="#自动补全-YouCompleteMe" class="headerlink" title="自动补全 YouCompleteMe"></a>自动补全 YouCompleteMe</h2><p><a target="_blank" rel="noopener" href="https://github.com/ycm-core/YouCompleteMe">Project Repo Link</a><br>你可能注意到，仓库README里写了YCM需要vim构建为有Python 3支持的，但是macOS随附的vim是不带的，所以要再装一个。<br>YCM的补全功能并非是用脚本实现的，也不是预编译的，所以需要自己构建，要求cmake和启用的语言支持的相关依赖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install vim cmake<br></code></pre></td></tr></table></figure>
+<p>之后可以安装YCM文件了，打开<code>~/.vimrc</code>，在<code>Plugin &#39;VundleVim/Vundle.vim&#39;</code>下方加入</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;ycm-core/YouCompleteMe&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>之后退出vim，再启动，输入<code>:PluginInstall</code><br>现在可以构建YCM了，切到YCM的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.vim/bundle/YouCompleteMe<br></code></pre></td></tr></table></figure>
+<p>YCM的构建脚本，语言支持参数通常都是<code>--xxx-completer</code>格式，详情参见原仓库的README，并按需求使用</p>
+<h3 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h3><p>这样的话，大家已经在<code>xcode-select</code>那一步安装了足够的工具，现在Mac上有<code>clangd</code>来支持C family的语言补全了<br>按需启用功能，这是列表</p>
+<ul>
+<li>Rust <code>--rust-completer</code> require <code>rust-analyzer</code></li>
+<li>C&#x2F;C++ <code>--clangd-completer</code> require <code>clangd</code></li>
+<li>Go <code>--go-completer</code> require <code>golang</code></li>
+<li>JS&#x2F;TS <code>--ts-completer</code> require <code>nodejs</code><br>etc..<br>之后加上相关参数，进行构建，比如启用C&#x2F;C++ Rust JS&#x2F;TS的</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install.py --clangd-completer --rust-completer --ts-completer<br></code></pre></td></tr></table></figure>
+<p>也可以直接全开，不过我没有试过</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./install.py --all<br></code></pre></td></tr></table></figure>
+
+<h2 id="下横栏-Airline"><a href="#下横栏-Airline" class="headerlink" title="下横栏 Airline"></a>下横栏 Airline</h2><p><a target="_blank" rel="noopener" href="https://github.com/vim-airline/vim-airline">Project Repo Link</a><br>这是一个信息栏，可以显示当前模式、文件名、文件格式、编码、还有词数、位置等等<br>打开<code>~/.vimrc</code>，在<code>Plugin &#39;ycm-core/YouCompleteMe&#39;</code>下方加入</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline&#x27;</span><br>Plugin <span class="hljs-string">&#x27;vim-airline/vim-airline-themes&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>之后退出vim，再启动，输入<code>:PluginInstall</code>，这次是安装Airline和它的theme<br>Airline中的部分主题、模式，可能需要nerd字体才能正常显示。我是用的是Meslo Nerd，可以通过<code>brew install font-meslo-lg-nerd-font</code>来安装。</p>
+<h2 id="Vim-后续设置"><a href="#Vim-后续设置" class="headerlink" title="Vim 后续设置"></a>Vim 后续设置</h2><p>我们统一一下主题，给vim的colorscheme换成catppuccin<br>打开<code>~/.vimrc</code>，在<code>Plugin &#39;vim-airline/vim-airline-themes&#39;</code>下方加入</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">Plugin <span class="hljs-string">&#x27;catppuccin/nvim&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>在这之后，因为macOS上的vimrc是空壳……所以我们只好自己开启一些功能</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-comment">&quot; Enable syntax highlighting</span><br><span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span><br><span class="hljs-comment">&quot; Enable line number</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">number</span><br><span class="hljs-comment">&quot; Set shiftwidth and tab to 4 spaces</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">sw</span>=<span class="hljs-number">4</span><br><span class="hljs-keyword">set</span> <span class="hljs-keyword">ts</span>=<span class="hljs-number">4</span><br><span class="hljs-comment">&quot; Let search jump to the first match when typing</span><br><span class="hljs-keyword">set</span> incsearch<br><span class="hljs-keyword">colorscheme</span> catppuccin<br><span class="hljs-keyword">let</span> <span class="hljs-variable">g:airline_theme</span>=<span class="hljs-string">&#x27;catppuccin&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>这样就配置完成了。</p>
+<h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p>放假了，假期很长<br>这是我这一学期发的第一篇blog，总是感觉没什么写的<br>前几天折腾ZFS+Arch+Hyprland，好像有很多东西，但是却又感觉文本太长，也无法确实记录<br>最终只是一小部分，在Arch折腾完之后又回来macOS搞，最终得以记录<br>想找回之前的热情，尽量找回吧</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/vim/" class="print-no-link">#vim</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>让Vim变得好看、顺手一些</div>
+      <div>https://blog.zlicdt.top/2025/06/05/vim-configure/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlicdt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/07/algorithm-enumerate/" title="不知道哪的算法笔记 -&gt; Enumerate">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">不知道哪的算法笔记 -&gt; Enumerate</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/13/A1/" title="杂谈 - A1">
+                        <span class="hidden-mobile">杂谈 - A1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

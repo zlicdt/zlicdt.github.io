@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zlicdt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在开发 nvwupd 的途中获得的新知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 API 查询 NVIDIA 驱动信息">
+<meta property="og:url" content="https://blog.zlicdt.top/2026/01/31/nvwupd-log/index.html">
+<meta property="og:site_name" content="zlicdt&#39;s blog">
+<meta property="og:description" content="在开发 nvwupd 的途中获得的新知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-31T11:04:52.000Z">
+<meta property="article:modified_time" content="2026-02-10T14:05:56.360Z">
+<meta property="article:author" content="zlicdt">
+<meta property="article:tag" content="Software">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>从 API 查询 NVIDIA 驱动信息 - zlicdt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.zlicdt.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="从 API 查询 NVIDIA 驱动信息"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-31 11:04" pubdate>
+          2026年1月31日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          860 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">从 API 查询 NVIDIA 驱动信息</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在开发 nvwupd 的途中获得的新知识</p>
+<span id="more"></span>
+<p>老黄提供了一套公开的 API 用于驱动下载页面，可以直接调用这些 API 来获取驱动信息。</p>
+<h2 id="nvwupd"><a href="#nvwupd" class="headerlink" title="nvwupd"></a>nvwupd</h2><p>nvwupd 是在 Windows 平台下使用的，因为不装 GeForce Experience 的情况下不能快速更新驱动，不能查找驱动更新，只能自己去 nv drv 网站去找最新的驱动版本然后和自己的对比。。。</p>
+<p>明明 CS2 都能在驱动过期时候提醒，懒狗v社都做了，似乎也是通过 api 获取的，不然就要让员工手动维护一份GPU核心和最新驱动的对照表了。</p>
+<p>有的显卡驱动停更了，比如10系往前，还能玩 CS2 但是不能用最新的驱动，这时候不能爆出来更新驱动提示</p>
+<p>nvwupd 是用 C# &amp; .NET -&gt; WinUI 3写的，大量vibe coding，不过模型性能高，再加上小规模，也没有多大问题<br>现阶段（26.01.31）是还在高速开发，现有问题是驱动下载好exe开不起来，也许是之前下一半搞错了。现在的响应流直接被存入到文件中，不经过校验完整性、哈希之后再存入文件（或者一个.downloading再重命名），导致了有时候就下了半个文件，PE头还正确有的，然后就能启动但是直接crash。<br>然后还在计划加入一个断点续传、终止下载的按钮，还有在后台作为服务定期检查更新，使用 Windows 通知发更新通知。</p>
+<h2 id="从-API-获取核心信息"><a href="#从-API-获取核心信息" class="headerlink" title="从 API 获取核心信息"></a>从 API 获取核心信息</h2><p>翻了一堆nv的blog，翻到这些，够用了。</p>
+<p><code>https://www.nvidia.com/Download/API/</code></p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lookupValueSearch.aspx?TypeID=2</code></td>
+<td>获取产品系列列表（psid）</td>
+</tr>
+<tr>
+<td><code>lookupValueSearch.aspx?TypeID=3</code></td>
+<td>获取具体产品列表（pfid）</td>
+</tr>
+<tr>
+<td><code>lookupValueSearch.aspx?TypeID=4</code></td>
+<td>获取操作系统列表（osid）</td>
+</tr>
+<tr>
+<td><code>processFind.aspx</code></td>
+<td>根据参数查询驱动列表</td>
+</tr>
+</tbody></table>
+<p>接下来的内容放到 nvwupd docs 里了，开仓库能看</p>
+<h3 id="获取操作系统的-osid"><a href="#获取操作系统的-osid" class="headerlink" title="获取操作系统的 osid"></a>获取操作系统的 osid</h3><figure class="highlight pwsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pwsh">[<span class="hljs-type">Net.ServicePointManager</span>]::SecurityProtocol=[<span class="hljs-type">Net.SecurityProtocolType</span>]::Tls12<br>(<span class="hljs-built_in">Invoke-RestMethod</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://www.nvidia.com/Download/API/lookupValueSearch.aspx?TypeID=4&quot;</span> <span class="hljs-literal">-Headers</span> <span class="hljs-selector-tag">@</span>&#123;<span class="hljs-string">&quot;User-Agent&quot;</span>=<span class="hljs-string">&quot;Mozilla/5.0&quot;</span>&#125;).LookupValueSearch.LookupValues.LookupValue | ? &#123; <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-match</span> <span class="hljs-string">&#x27;^Windows&#x27;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs text">Code      Name                      Value<br>----      ----                      -----<br>10.0      Windows 10 32-bit         56<br>10.0      Windows 10 64-bit         57<br>10.0      Windows 11                135<br>6.1       Windows 7 32-bit          18<br>6.1       Windows 7 64-bit          19<br>6.3       Windows 8.1 32-bit        40<br>6.3       Windows 8.1 64-bit        41<br>6.2       Windows 8 32-bit          27<br>6.2       Windows 8 64-bit          28<br>6.0       Windows Vista 32-bit      9<br>6.0       Windows Vista 64-bit      10<br>5.1       Windows XP                6<br>5.2       Windows XP 64-bit         7<br>nt-6.1    Windows Server 2008       16<br>6.1-64    Windows Server 2008 x64   17<br>6.1-64-R2 Windows Server 2008 R2 64 21<br>6.2-1     Windows Server 2012       32<br>6.2-R2    Windows Server 2012 R2 64 44<br>10.0-NT   Windows Server 2016       74<br>10.0-NT   Windows Server 2019       119<br>10.0-NT   Windows Server 2022       134<br>10.0-NT   Windows Server 2025       153<br>5.2       Windows Server 2003       15<br>5.2       Windows Server 2003 x64   8<br>5.0       Windows 2000              5<br>4.9       Windows ME                4<br>4.1       Windows 98                3<br>4.0       Windows NT4               2<br>4.0       Windows 95                1<br></code></pre></td></tr></table></figure>
+
+<p>真是 Windows 全系都有。Windows 11 为 <strong>135</strong></p>
+<h3 id="获取-psid"><a href="#获取-psid" class="headerlink" title="获取 psid"></a>获取 psid</h3><p>比如，40系</p>
+<figure class="highlight pwsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pwsh">[<span class="hljs-type">Net.ServicePointManager</span>]::SecurityProtocol=[<span class="hljs-type">Net.SecurityProtocolType</span>]::Tls12<br>(<span class="hljs-built_in">Invoke-RestMethod</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://www.nvidia.com/Download/API/lookupValueSearch.aspx?TypeID=2&quot;</span> <span class="hljs-literal">-Headers</span> <span class="hljs-selector-tag">@</span>&#123;<span class="hljs-string">&quot;User-Agent&quot;</span>=<span class="hljs-string">&quot;Mozilla/5.0&quot;</span>&#125;).LookupValueSearch.LookupValues.LookupValue | ? &#123; <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-match</span> <span class="hljs-string">&#x27;GeForce&#x27;</span> <span class="hljs-operator">-and</span> <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-match</span> <span class="hljs-string">&#x27;RTX\s*40&#x27;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">RequiresProduct : True<br>ParentID        : 1<br>IsSelectLess    : False<br>Name            : GeForce RTX 40 Series (Notebooks)<br>Value           : 129<br><br>RequiresProduct : True<br>ParentID        : 1<br>IsSelectLess    : False<br>Name            : GeForce RTX 40 Series<br>Value           : 127<br></code></pre></td></tr></table></figure>
+
+<p>因此40系移动端的 <code>psid</code> 为 <strong>129</strong>，桌面端为 <strong>127</strong></p>
+<h3 id="获取-pfid"><a href="#获取-pfid" class="headerlink" title="获取 pfid"></a>获取 pfid</h3><p>示例是 GeForce RTX 4060 Laptop GPU</p>
+<blockquote>
+<p>注意：笔记本 GPU 的名称字符串通常没有 NVIDIA 前缀，但台式机版本有</p>
+</blockquote>
+<figure class="highlight pwsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pwsh">[<span class="hljs-type">Net.ServicePointManager</span>]::SecurityProtocol=[<span class="hljs-type">Net.SecurityProtocolType</span>]::Tls12<br>(<span class="hljs-built_in">Invoke-RestMethod</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://www.nvidia.com/Download/API/lookupValueSearch.aspx?TypeID=3&quot;</span> <span class="hljs-literal">-Headers</span> <span class="hljs-selector-tag">@</span>&#123;<span class="hljs-string">&quot;User-Agent&quot;</span>=<span class="hljs-string">&quot;Mozilla/5.0&quot;</span>&#125;).LookupValueSearch.LookupValues.LookupValue | ? &#123; <span class="hljs-variable">$_</span>.Name <span class="hljs-operator">-eq</span> <span class="hljs-string">&quot;GeForce RTX 4060 Laptop GPU&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">ParentID Name                        Value<br>-------- ----                        -----<br>129      GeForce RTX 4060 Laptop GPU 1007<br></code></pre></td></tr></table></figure>
+
+<h2 id="构造请求"><a href="#构造请求" class="headerlink" title="构造请求"></a>构造请求</h2><p>现在这种情况就是在 Windows 11 + 4060 Laptop 获取更新，我们知道了：</p>
+<ul>
+<li>psid &#x3D; 129</li>
+<li>pfid &#x3D; 1007</li>
+<li>osid &#x3D; 135</li>
+</ul>
+<p>然后就使用<code>processFind</code>了，构造完成就是 <code>https://www.nvidia.com/Download/processFind.aspx?dtcid=1&amp;lang=zh-hans&amp;lid=1&amp;osid=135&amp;pfid=1007&amp;psid=129</code>，访问即可查询到可用的驱动列表。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Software/" class="print-no-link">#Software</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>从 API 查询 NVIDIA 驱动信息</div>
+      <div>https://blog.zlicdt.top/2026/01/31/nvwupd-log/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlicdt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/02/08/foxconn-mt7922-linux/" title="Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/11/19/multiple-forward/" title="多重 SSH TCP 隧道转发">
+                        <span class="hidden-mobile">多重 SSH TCP 隧道转发</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

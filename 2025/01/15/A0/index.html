@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zlicdt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="步进A0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杂谈 - A0">
+<meta property="og:url" content="https://blog.zlicdt.top/2025/01/15/A0/index.html">
+<meta property="og:site_name" content="zlicdt&#39;s blog">
+<meta property="og:description" content="步进A0">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-15T10:32:57.000Z">
+<meta property="article:modified_time" content="2026-02-10T14:05:56.360Z">
+<meta property="article:author" content="zlicdt">
+<meta property="article:tag" content="Talk">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>杂谈 - A0 - zlicdt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.zlicdt.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="杂谈 - A0"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-01-15 10:32" pubdate>
+          2025年1月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">杂谈 - A0</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>步进A0</p>
+<span id="more"></span>
+<h2 id="近期blog问题"><a href="#近期blog问题" class="headerlink" title="近期blog问题"></a>近期blog问题</h2><p>我很长一段时间弃管了这个blog,大约是十月到十二月，这段时间要复习准备期末考试，UIC相比于别的学校平时分给的多，所以期末不会捞太多</p>
+<p>直到考Foundation of C Programming前一天晚上，我要进行复习，想起了我之前转载过阮一峰老师的C语言教程，遂打开看</p>
+<p>于是我意识到 <strong>我的站挂了。</strong></p>
+<p>因为那天要复习，所以我没去管太多，认为可能是cloudflare抽风了，等考试之后去更新下配置，不幸考完试就忘掉了</p>
+<p>之后就是军训，因为广东天气炎热所以UIC的军训是在冬天，温度大概和东北的十月份左右差不多</p>
+<p>然后<del>我把军训逃了</del></p>
+<p>1月2日军训，我29号就回家了</p>
+<p>之后HCC的群友也发现了这个站挂了，我也有时间搞这个，所以我去看了下github pages页</p>
+<p>DNS check failed,然后与TLS相关的错误也有</p>
+<p>于是我重新配置了下cloudflare的解析，在阿里云那边把DNS改到了cloudflare的，结果无限重定向</p>
+<p>后来发现，cloudflare到github pages是http,而用户到cloudflare是https,于是我关掉了github pages的Enforce https,问题就解决了</p>
+<p>上线几天，我一次装archlinux时看到有个地方之前改了一半，混乱不堪，于是我又进行了修改</p>
+<p>我将把修复内容与这篇杂谈一起推送，并且修改了一些UI颜色配置，更改了背景图（文文。新闻 ke-ta老师的作品）</p>
+<h2 id="近期听的音乐"><a href="#近期听的音乐" class="headerlink" title="近期听的音乐"></a>近期听的音乐</h2><p>我开始怀旧了，怀念前几年了</p>
+<p>整理一下网课的年份：2020和2022年</p>
+<p>我是从20年春季开始听鼠曲的，至今Strobe听了2139次（网易云计数），现在写这篇blog时候我还在听</p>
+<p>Strobe是两个曲子合一起的，看到油管上的扒谱分析，简直是天才之作，天才、汗水、匠心缺一不可</p>
+<p>Intro分成四段，每个衔接配合的精妙程度，只能用浑然天成来说</p>
+<p>Lead的音色是使用Strobe合成器捏出来的，这个合成器现在是第二代，当时还是类似TUI的形式，没有真正意义上的GUI，它会模拟实体合成器在高电平时候的音高偏移，制作出这种迷幻的效果</p>
+<p>有人尝试使用别的合成器进行还原，还没有成功过的</p>
+<p>旋律营造出一种温暖而又凶险的景色，宁静秋夜中望月的感觉，凉风静止，月光温暖但脆弱，照在地上银色的质感</p>
+<p>后来的弦乐，是可以让我沉浸在宁静而又优美的氛围中</p>
+<p>后面浑然天成的渐进，音色设计和混音都很精细，是鼠曲一贯的常态，中段的转调和drop前的synth是令我最惊奇的</p>
+<p>后来听了很多鼠曲，我评价为具有超级魔力的，甚至能给我生成很多不应属于我的记忆</p>
+<p>只记得2009年冬天，和几个野生技术人员，深夜在朝着什么方向走。夜空清澈，群星闪烁，绿光紫光蓝光这种</p>
+<p>我喜欢鼠曲，因为总能找到和我精神状态相符的曲子，或者能从中感受到什么或者看到什么</p>
+<p>我想尽数追随印象中2009年的状态，可当时我现实中才三岁</p>
+<p>我整了个网易云歌单叫【非常好Deadmau5】收集这些，它们总能给我带来2009年到2013年左右的幻境</p>
+<p>至于别的，在20年后期听Melodic Techno，推荐德国制作人Recondite, 光头大佬，很强</p>
+<p>22年和20年大致差不多，听了Deadmau5没发的一些ID,比如之前的Hit Save和The hive</p>
+<p>Hit Save是唯一有可能超越Strobe的曲子，而The Hive只是一个很早的也很短的Trance罢了，但是有那种很积极的感觉，现在的曲子所不具备的感觉</p>
+<p>还有别的，不过最核心的说完了</p>
+<h2 id="近期的状态"><a href="#近期的状态" class="headerlink" title="近期的状态"></a>近期的状态</h2><p>等待期末出分很紧张，不过还行，意料之外体育C-，看来是我逃体测的原因</p>
+<p>提前回到了吉林，真是横着走，一身轻松了，学校那些焦躁的烂事和我无关了</p>
+<p>物价还便宜，晚上到处去吃烤肉，几个想念馆子都吃一遍</p>
+<p>还给驾照领了，最近被迫到哪去都开车来进行一个练车，不好的是晚上吃串不能喝酒了</p>
+<p>带了一台7945HX+4060的R9000P回来，内存加到了32G</p>
+<p>这个机器真的烫烫烫，7950X直接放本子里了</p>
+<p>不过现在用arch,为了逃避逆天NVIDIA的驱动问题，使用 <del>核显直连</del></p>
+<p>就是那个H55&#x2F;桌面zen4带的2CU小RDNA2,叫做Radeon 610M,不配有RX，是最弱的光追卡，不过可以正常睡眠&#x2F;唤醒</p>
+<p>然后游戏使用prime-run开，这样可以跑在独显上，完美</p>
+<h3 id="关于围棋"><a href="#关于围棋" class="headerlink" title="关于围棋"></a>关于围棋</h3><p><strong>我不会</strong></p>
+<p>但是可以看到我的blog有一篇katago安装教程</p>
+<p>小时候学过（6岁），定到10级，跑路，全忘</p>
+<p>2022年时候重新审视，发现竟然如此高深莫测，黑白子在天圆地方无数变化，古今中外群星闪耀</p>
+<p>被美到，重新开始跟柯洁的皮套人学，后来又跑路</p>
+<p>当时拿katago到野狐上去下的，现在想起来太耻辱了，这不就是竞技游戏开挂么</p>
+<p>现在继续跟雪糕进行一个学，希望这次不会半途跑路</p>
+<hr>
+<p>先说这么多吧</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Talk/" class="print-no-link">#Talk</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>杂谈 - A0</div>
+      <div>https://blog.zlicdt.top/2025/01/15/A0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlicdt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年1月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/17/rlcraft-installation/" title="记录 RLCraft 服务器的安装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">记录 RLCraft 服务器的安装</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/21/git-guide/" title="Git 初步教程">
+                        <span class="hidden-mobile">Git 初步教程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

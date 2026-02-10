@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zlicdt">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="适用于 CDS 新生(Mid 2025) 中 Mac 用户的 FoC 课程环境搭建教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对于 Mac 的 FoC 环境搭建">
+<meta property="og:url" content="https://blog.zlicdt.top/2025/09/09/macfoc/index.html">
+<meta property="og:site_name" content="zlicdt&#39;s blog">
+<meta property="og:description" content="适用于 CDS 新生(Mid 2025) 中 Mac 用户的 FoC 课程环境搭建教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/image.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/terminal.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/success.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/vim.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/vscode_d.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/vscode_v.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/ext_s.png">
+<meta property="og:image" content="https://blog.zlicdt.top/img/macfoc/c_e.png">
+<meta property="article:published_time" content="2025-09-09T17:45:10.000Z">
+<meta property="article:modified_time" content="2026-02-10T14:05:56.360Z">
+<meta property="article:author" content="zlicdt">
+<meta property="article:tag" content="Tutorial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.zlicdt.top/img/macfoc/image.png">
+  
+  
+  
+  <title>对于 Mac 的 FoC 环境搭建 - zlicdt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.zlicdt.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="对于 Mac 的 FoC 环境搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-09 17:45" pubdate>
+          2025年9月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">对于 Mac 的 FoC 环境搭建</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>适用于 CDS 新生(Mid 2025) 中 Mac 用户的 FoC 课程环境搭建教程</p>
+<span id="more"></span>
+<p>本文是面向初心者的。老登偷偷的进来，打枪的不要！</p>
+<p><strong>如果你跟着所有的工序做一遍，就都会了。</strong></p>
+<p>笔者是 24 CST 的，有一大堆设备，其中不乏 Mac。你以为我要悲情叙事了，讲述什么“大一小白痛苦踩坑经历”什么的，错误的。</p>
+<p>笔者已经是老油条了，可以 <del>男娘学姐带你们装arch</del> ，带您们激情四射爆揍鱼壳。</p>
+<p>蓝色尖头，开源大In(stall) party。9月14日、9月15日，来势汹汹的 Arch Linux 激爆网络神秘地带，加上风靡多年的GNU，将你推向AM极D，不用麻醉，一样情不自禁hi起来，飞起来。</p>
+<p>如题，笔者发现当年（2024）有很多同学使用 Mac。很多人叫苦不迭<del>（thats WHY I 悲愤！！）</del>，于是我觉得有必要搞一下这个。</p>
+<h2 id="Foundation-of-C-Programming-官方课程环境"><a href="#Foundation-of-C-Programming-官方课程环境" class="headerlink" title="Foundation of C Programming 官方课程环境"></a>Foundation of C Programming 官方课程环境</h2><p>我先给PPT中的环境列出来：</p>
+<ul>
+<li>IDE：Pelles C<ul>
+<li>Windows Only</li>
+<li>编译器是自带的<code>pocc</code></li>
+<li>多年未更新的老登东西</li>
+<li>不支持现代C标准</li>
+</ul>
+</li>
+<li>作业评测：AutoLab<ul>
+<li>GNU&#x2F;Linux 环境（笔者hack出来是个老Ubuntu，搭配Skylake Xeon）</li>
+<li>GNU GCC (我们邪恶山羊头在发力)</li>
+</ul>
+</li>
+</ul>
+<p>显然 Windows + PLC 这一套是不入流的东西，我们不需要使用。老登课程不更新也能用，就摆了，那有什么办法（</p>
+<h2 id="进行一个批判"><a href="#进行一个批判" class="headerlink" title="进行一个批判"></a>进行一个批判</h2><p>我们是高贵的、血统纯正的 Macintosh 用户，怎么能和微♂软系同流合污！</p>
+<p>众所周知，Windows这个平台，在这一块的是 Developer anti-friendly 的，对开发者不友好的。它对开发者不友好了，那开发者再用它，就是小M♂了。</p>
+<p>我们C语言的体系，一整个都是建立在类Unix上的！</p>
+<p>关于Windows用户们可以选择的主流体系，有三条路：</p>
+<ul>
+<li>MSVC 全M$化</li>
+<li>MinGW 在POSIX大环境进行一个交叉编译！</li>
+<li>WSL2&#x2F;VM 虚拟化启动一个类Unix</li>
+</ul>
+<p>显然我们课程使用的Pelles C 是最不入流的路边一条。</p>
+<h2 id="启动！"><a href="#启动！" class="headerlink" title="启动！"></a>启动！</h2><h3 id="介绍一下选项"><a href="#介绍一下选项" class="headerlink" title="介绍一下选项"></a>介绍一下选项</h3><p>因为C这一块的是手动挡，不像 py&#x2F;ruby 那种解释型语言，我们需要一个编译器，而在 macOS 平台上可以使用的选项有：</p>
+<ul>
+<li>LLVM Clang</li>
+<li>GCC on macOS(我也不知道是什么玩意儿)</li>
+<li>Linux 生态<ul>
+<li>VM开 arm64 Debian（为什么不推荐蓝色尖头呢，因为archarm非官方支持）</li>
+<li>容器（也都是底下是Linux VM）</li>
+</ul>
+</li>
+<li>逆天的<ul>
+<li>PD VM + Windows on ARM + MSVC<br>等一大堆。</li>
+</ul>
+</li>
+</ul>
+<p>就用最主流吧！评价最高的Clang</p>
+<h3 id="找到-Terminal"><a href="#找到-Terminal" class="headerlink" title="找到 Terminal"></a>找到 Terminal</h3><p>试着在你的 dock 栏（屏幕最下面那一条）找到“启动台”（通常是第二个）<br>（因为我已经上到了 macOS 26 Beta 所以是App）</p>
+<p><img src="/../img/macfoc/image.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后在最顶端的输入框里，输入“Terminal.app”（相信 macOS 会自动补全的，你只需要按一下回车）</p>
+<p>然后出来这么一个窗口，这是一个非常重要的东西你们以后会用到的<del>只要是CST学生就会用到我们用处非凡强大的终端模拟器模拟tty是正确的计算机的核心</del></p>
+<p><img src="/../img/macfoc/terminal.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果找不到呢，也没关系（如果你连 Launchpad 都找不到了？）</p>
+<p>按<code>command</code>键+<code>空格</code>键，或者直接<strong>按一下F4键，进入聚焦搜索，然后输入 Terminal.app 回车</strong>就好。</p>
+<h3 id="安装-Xcode-命令行工具"><a href="#安装-Xcode-命令行工具" class="headerlink" title="安装 Xcode 命令行工具"></a>安装 Xcode 命令行工具</h3><p>为什么呢？</p>
+<p>因为这是苹果官方支持的方式，而且就算使用brew装别的东西也绕不开它，因为里面有git。</p>
+<p>之后，我们输入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">xcode-select --install<br></code></pre></td></tr></table></figure>
+
+<p>我们在这里使用的是Shell，Shell是一个壳，用以使用命令和OS交互。macOS默认的Shell是zsh。</p>
+<p>如果没有安装过的话，会弹出一个窗口，询问是否要安装“Xcode命令行工具”，在这里就要你自己选择了。<br>（如果你想选否……那我问你，？）</p>
+<p>在安装完毕后，再开一个Terminal窗口（用以刷新PATH防止找不到），输入</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">clang -v<br></code></pre></td></tr></table></figure>
+
+<p>如果看到以下输出，就是成功了<br><img src="/../img/macfoc/success.png" srcset="/img/loading.gif" lazyload><br>不成功有以下的原因</p>
+<ol>
+<li>你点否了（或者是别的消极选项）</li>
+<li>网不好</li>
+<li>中途断了<br>否则很难失败。如果失败了，重新<code>xcode-select --install</code>吧</li>
+</ol>
+<p>这时候，我们就可以测试构建了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这是一个最基础的C语言程序对吧</p>
+<p>复制一下它，带好了，一会要用。</p>
+<h3 id="用一下-VIM"><a href="#用一下-VIM" class="headerlink" title="用一下 VIM"></a>用一下 VIM</h3><p>在 Terminal 里输入<code>vim a.c</code><br><img src="/../img/macfoc/vim.png" srcset="/img/loading.gif" lazyload></p>
+<p>vim 是一个很自由的命令行文本编辑器，可以爆改得很帅，但是目前你们看到的 vim 还不会帅，所以我推一个配置（广告时间）<br><a href="https://blog.zlicdt.top/2025/06/05/vim-configure/">https://blog.zlicdt.top/2025/06/05/vim-configure/</a></p>
+<p>打开之后按<code>i</code>键，进入<code>INSERT</code>模式</p>
+<p>之后将刚才的C语言代码复制粘贴到里面，按<code>esc</code>键退出<code>INSERT</code>模式。</p>
+<p>之后输入<code>:wq</code>，退出 vim。</p>
+<p>我在这里解释一下，<code>:</code>代表后面跟的是命令，<code>w</code>是 write 写入，<code>q</code>是 quit 退出。</p>
+<p>之后我们就回到了 Shell。</p>
+<p>执行<code>ls</code>，就可以看到目录下多出来的<code>a.c</code>文件。<code>ls</code>是一个用于列出当前目录下文件或目录的命令（老登建议使用eza替代）。</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">clang a.c<br></code></pre></td></tr></table></figure>
+<p>就会看到主目录下出现了一个叫<code>a.out</code>的文件，这就是编译成果了，一个二进制文件，可以执行。<code>a.out</code>是 gcc&#x2F;clang 默认的输出文件名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./a.out<br></code></pre></td></tr></table></figure>
+
+<p>然后会看到，执行完毕什么也没有，这是因为本来程序就是空的。不过，执行成功了就好。</p>
+<p>虽然到这里就好了，但是你还是要学会删除文件的命令（我相信你们有耳闻rm -rf），删除这俩临时文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -f a.c a.out<br></code></pre></td></tr></table></figure>
+
+<div class="note note-warning">
+            <p>掘地三尺！同学们</p>
+          </div>
+
+<h3 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h3><p>现在好了，编译器有了，代码搁哪写呢？</p>
+<p>我们有以下的选择，包括但不限于：</p>
+<ul>
+<li>vscode + C&#x2F;C++ extension</li>
+<li>CLion</li>
+<li>Xcode</li>
+<li>VS for mac</li>
+<li>vim + ycm</li>
+<li>emacs</li>
+<li>nano</li>
+<li>Atom</li>
+<li>notepad.exe</li>
+<li>cat &lt;&lt; EOF &gt;&gt; *.c</li>
+<li>echo xxx \ &gt;&gt; *.c</li>
+<li>……</li>
+</ul>
+<p>那怎么办呢，太多了，哎呀选不过来……你一定注意到，我列出的都是能编辑文本就行的东西，何必痛苦选择呢？</p>
+<p>然而CLion（现在非商业用途已经不收费了）和Xcode都巨大，而且Xcode偏门反人类（笑话，我都做了好久SwiftUI开发），vim + ycm不适合小白……</p>
+<p>我搁着先写<strong>vscode + C&#x2F;C++ extension</strong></p>
+<h3 id="VSCode-Universal"><a href="#VSCode-Universal" class="headerlink" title="VSCode Universal"></a>VSCode Universal</h3><p>（如果你们安装了homebrew的话我一定会写brew install的）</p>
+<p>打开 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">https://code.visualstudio.com</a></p>
+<p>布局已经大改了，点击这个抽象按钮<br><img src="/../img/macfoc/vscode_d.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后就开始下载了，堆在右下角下载那堆叠里面<br><img src="/../img/macfoc/vscode_v.png" srcset="/img/loading.gif" lazyload></p>
+<p>给它<strong>拖到到Applications里</strong>，就完事了，装完了（呀↗️）</p>
+<p>打开之后，在左边找到这图标<br><img src="/../img/macfoc/ext_s.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击之后在上面的搜索栏输入C&#x2F;C++，会自动搜索。之后，安装这个：<br><img src="/../img/macfoc/c_e.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后就好了，关于VSCode咋用，相信大家都会问LLM了，这里不再赘述，总之有语法高亮和自动补全了……</p>
+<h3 id="遇到了问题！"><a href="#遇到了问题！" class="headerlink" title="遇到了问题！"></a>遇到了问题！</h3><p>呀！不能GUI操作LLDB！甚至程序跑起来，<strong>人无法与terminal交互！</strong></p>
+<p>这是macOS在<del>Apple Silicon时代</del>T2末期的安全政策收紧，从10.15之后，就这样了。如今是无解的。</p>
+<p>怎么办呢？不怕，试试我给Q酱写的脚本！哎，怎么传达出去呢～<br><a target="_blank" rel="noopener" href="https://github.com/zlicdt/compile4run">https://github.com/zlicdt/compile4run</a></p>
+<p>用法参见仓库的README，执行完我提供的命令之后，就可以使用形如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">compile4run a.c<br></code></pre></td></tr></table></figure>
+<p>这种形式的命令来编译并运行程序了。</p>
+<h3 id="打包-📦（重要）"><a href="#打包-📦（重要）" class="headerlink" title="打包 📦（重要）"></a>打包 📦（重要）</h3><p>这是一个<strong>很严重的、叫苦不迭的点</strong></p>
+<p>在这一块的，autolab需要打包为.zip，还好</p>
+<p>但是这玩意的脚本是怎么写的呢？我来依靠行为给你逆推一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">unzip x114514191.zip<br>gcc *.c -o main.o<br>judge.py -? ./main.o<br></code></pre></td></tr></table></figure>
+
+<p>大差不差，相信老登们已经发现了：<br>呀，压缩包的root直接就是这堆源文件，不能套一层文件夹，不然就是<code>cc: error: no input files</code></p>
+<p>所以，这样做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 你的源码目录<br><span class="hljs-built_in">ls</span> <span class="hljs-comment"># 检查一下现在是否下面直接就是那堆源码文件了</span><br>zip x114514191 *.c *.h<br><span class="hljs-comment"># 这里的压缩命令，如果目录下没有对应的文件，zsh会报匹配不上的问题</span><br><span class="hljs-comment"># 参见我最后放的视频</span><br></code></pre></td></tr></table></figure>
+<p>其中x114514191是你的学号。</p>
+<p>之后上传这个x114514191.zip，就万无一失了，否则会触发对机魂的曲解导致的斩杀</p>
+<h2 id="关于-Project"><a href="#关于-Project" class="headerlink" title="关于 Project"></a>关于 Project</h2><p>在学期的最后，你们要做一个Project。他们会给出一个Requirements清单，按照上面的要求，实现一个命令行交互的程序，通常是CRUD内容。要求使用多文件、宏定义与编写头文件以复用函数。</p>
+<p>我有同学，喜爱旁门左道的操作系统Windows，然后做出了什么事件呢？</p>
+<p><strong>使用了&lt;windows.h&gt;</strong></p>
+<p>大家都知道，Autolab是一个GNU&#x2F;Linux环境，使用glibc的老旧Ubuntu。编译器还是GNU GCC，使用GCC lib。然而<code>windows.h</code>是MSVC的东西，这样会发生什么事情呢？</p>
+<p><strong>fatal error: ‘windows.h’ file not found</strong></p>
+<p>在我们Project最终提交前一天晚上，会开Autolab提交以在Autolab的环境构建一次，以确保程序是合规的。</p>
+<div class="note note-warning">
+            <p>在CST，就很难使用Windows的。</p>
+          </div>
+
+<p>之后无法构建，因为引入了不存在的头文件。临提交前几个小时，开始手忙脚乱得修改。</p>
+<p>这就结束了吗？错误的。这位同学想玩点花样，在结束一步的操作之后，试图清屏。因为这位同学实在是太喜欢Windows了，于是在这份代码中，使用了：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">system(<span class="hljs-string">&quot;cls&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>md，本来你调用shell命令的行为就很恶意了（我是没敢用的），但是我们的课程比较宽容，这样也是被允许的——</p>
+<div class="note note-info">
+            <p>在我们类Unix环境下应当使用：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-comment">// ...</span><br>system(<span class="hljs-string">&quot;clear&quot;</span>);<br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+          </div>
+
+<p>当然，这次构建可以通过了，最后到了TA那里——</p>
+<p><strong>sh: cls: command not found</strong></p>
+<p>那怎么办嘛，爆掉了……</p>
+<p>所以，一定要使用我们在C language这一块使用原生态的类Unix生态。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>视频资料已经在 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1rRa4zGEQW">https://www.bilibili.com/video/BV1rRa4zGEQW</a> 放置。</p>
+<p>找我聊请用电子邮件，我觉得大概好了，如果再出来错误就告知我，进行修改。</p>
+<p>在Macintosh平台，有各种安全限制。不过要游刃有余的话，请来蓝色尖头邪恶企鹅神教。注意我们可能存在的in(stall) party。9月14&#x2F;15日是为了neta极地大冲击，不一定是正确的日期。</p>
+<p>如果有图加载不能的话，是该使用魔法的时间了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Tutorial/" class="print-no-link">#Tutorial</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>对于 Mac 的 FoC 环境搭建</div>
+      <div>https://blog.zlicdt.top/2025/09/09/macfoc/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zlicdt</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年9月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/09/29/A2/" title="杂谈 - C0">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">杂谈 - C0</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/27/log-tailscale-1/" title="记录一次折腾 Tailscale">
+                        <span class="hidden-mobile">记录一次折腾 Tailscale</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
