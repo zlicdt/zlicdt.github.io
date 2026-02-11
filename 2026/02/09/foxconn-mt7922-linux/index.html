@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.webp">
   <link rel="icon" href="/img/fluid.webp">
   
-    <link rel="canonical" href="https://blog.zlicdt.top/2025/06/07/algorithm-enumerate/"/>
+    <link rel="canonical" href="https://blog.zlicdt.top/2026/02/09/foxconn-mt7922-linux/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,24 +21,24 @@
   <meta name="author" content="zlicdt">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Enumerate">
+    <meta name="description" content="今天在arch群里看见的问题，有解决方案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="不知道哪的算法笔记 -&gt; Enumerate">
-<meta property="og:url" content="https://blog.zlicdt.top/2025/06/07/algorithm-enumerate/index.html">
+<meta property="og:title" content="Foxconn &#x2F; Hon Hai MT7922 在 Linux 下无法使用蓝牙">
+<meta property="og:url" content="https://blog.zlicdt.top/2026/02/09/foxconn-mt7922-linux/index.html">
 <meta property="og:site_name" content="zlicdt&#39;s blog">
-<meta property="og:description" content="Enumerate">
+<meta property="og:description" content="今天在arch群里看见的问题，有解决方案">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-06-07T20:40:15.000Z">
+<meta property="article:published_time" content="2026-02-08T19:37:16.000Z">
 <meta property="article:modified_time" content="2026-02-10T14:05:56.360Z">
 <meta property="article:author" content="zlicdt">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>不知道哪的算法笔记 -&gt; Enumerate - zlicdt&#39;s blog</title>
+  <title>Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙 - zlicdt&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="不知道哪的算法笔记 -&gt; Enumerate"></span>
+            <span id="subtitle" data-typed-text="Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-07 20:40" pubdate>
-          2025年6月7日 晚上
+        <time datetime="2026-02-08 19:37" pubdate>
+          2026年2月8日 晚上
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          351 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          8 分钟
+          2 分钟
         
       </span>
     
@@ -296,41 +296,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">不知道哪的算法笔记 -&gt; Enumerate</h1>
+            <h1 id="seo-header">Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Enumerate</p>
+                <p>今天在arch群里看见的问题，有解决方案</p>
 <span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/basic/enumerate/">OI wiki</a></p>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>枚举（英语：Enumerate）是基于已有知识来猜测答案的一种问题求解策略。<br>枚举的思想是不断地猜测，从可能的集合中一一尝试，然后再判断题目的条件是否成立。</p>
-<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>一个一个试出来喵！</p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><div class="note note-info">
-            <p>一个数组中的数互不相同，求其中和为0的数对的个数。</p>
-          </div>
-<p>可行的办法是遍历每一个元素，给它们相加看是否和为0</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; ++j)<br>        <span class="hljs-keyword">if</span> (a[i] + a[j] == <span class="hljs-number">0</span>) ++ans;<br></code></pre></td></tr></table></figure>
-<p>然而第一个数和第二个数，正反着来都一样，所以只需要让第二个数下标的范围（也就是尝试第二个数的次数）小于第一个数的下标，就不会让数反过来再来一次，最后给总数乘以2就好了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; i; ++j)<br>        <span class="hljs-keyword">if</span> (a[i] + a[j] == <span class="hljs-number">0</span>) ++ans;<br></code></pre></td></tr></table></figure>
-<p>枚举其中一个数之后，题目的条件已经确定了其他的要素（另一个数）的条件，如果能直接判断题目要求的那个数是否存在，就可以省掉枚举后一个数的时间喵。</p>
-<div class="note note-success">
-            <p>这个方法很巧妙，可能有点难以理解。如果不能理解，请多次阅读这段话喵。</p>
-          </div>
-<p>在这里，‘桶’这个数组的下标中，MAXN代表0，当迭代器到达元数组a中的i标元素时，met数组先进行一次判断，当前met数组的下标<code>MAXN - a[i]</code>是否和已经被标记为“遍历过的”met数组中元素的下标相同。然后无论如何，迭代器进行到这里，当前met中的元素就会被标记“遍历过的”。<br>哈气，意义难以理解，其实……<br>设想如果当前的<code>i = 2，a[i] = a[2] = 3，MAXN = 10</code><br>经过memset，met数组已经全部被初始化为<code>false</code>。<br>那么，<code>MAXN - a[i] = 10 - 3 = 7</code><br><code>met[MAXN - a[i]]</code>也就是<code>met[7]</code>被标记为<code>true</code>；<br>之后假如<code>i = 4，a[i] = a[4] = -3</code>，而这个-3是我们要寻找的一个元素<br>那么，<code>MAXN - a[i] = 10 - (-3) = 7</code><br>而<code>met[7]</code>已经被标记为<code>true</code>，所以<code>ans</code>增1<br>最终，这里只需要进行n次循环，就能覆盖所有的情况喵</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> MAXN = <span class="hljs-number">100000</span>;  <span class="hljs-comment">// 此处 MAXN 是数组内元素的值域</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> a[])</span> </span>&#123;<br>    <span class="hljs-type">bool</span> met[MAXN * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>];  <span class="hljs-comment">// 创建一个能装下 [-MAXN, MAXN] 的桶</span><br>    <span class="hljs-built_in">memset</span>(met, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(met));<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>        <span class="hljs-keyword">if</span> (met[MAXN - a[i]]) ++ans;  <span class="hljs-comment">// 如果桶内有想要的元素，答案加一</span><br>        met[MAXN + a[i]] = <span class="hljs-literal">true</span>;  <span class="hljs-comment">// 无论如何，都要把当前元素放进桶里</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
-<div class="note note-info">
-            <p>有一个由按钮组成的矩阵，其中每行有6个按钮，共5行。每个按钮的位置上有一盏灯。当按下一个按钮后，该按钮以及周围位置(上边、下边、左边、右边)的灯都会改变一次。即，如果灯原来是点亮的，就会被熄灭；如果灯原来是熄灭的，则会被点亮。在矩阵角上的按钮改变3盏灯的状态；在矩阵边上的按钮改变4盏灯的状态；其他的按钮改变5盏灯的状态。请你写一个程序，确定需要按下哪些按钮，恰好使得所有的灯都熄灭。</p>
-          </div>
-<p>一开始看到题目，想要表示一个5x6的矩阵，我们就要定义一个二维数组了</p>
-<div class="note note-primary">
-            <p>这里玩花活用容器会慢</p>
-          </div>
-<p>如果我们把所有可能的状态表示出来的话，就有$2^{30}$种可能，这样的开销太大了<br>我们的目标是给所有的灯都熄灭，所以我们发现：按下一个按钮，它正上面的灯会改变，当前行的情况可以先忽略让下一行去处理，而仅仅注意当前行每个按钮上面的灯的状态，按这个按钮去控制它，可以引入“串行”的思想。<br>第一行的状态，就对应了下面行操作的唯一一种情况，每一行的操作都是：尽力熄灭上一行的灯。<br>当到达最后一行时，如果有当前行无论如何操作都不能熄灭的情况，那这次第一行的状态就是不合法的。</p>
-<p>还可以发现，在边&#x2F;角上的按钮，操作范围也是周围四个灯，但是因为触及边界，所以只能操作界内的灯，如果按照5x6矩阵来表示，将会很麻烦，需要判断是否处于边界并做出相应更改。<br>为了简化这一过程，就在每个边外加入一行，使其变为7x8矩阵，这样忽略在界外的元素就好，不用去做特殊的处理了。</p>
-<p>一个灯在被影响两次后，就会回到一开始的状态，这和一位二进制加法相似。所以，我们只需要表示“按下”这一动作为1，让两个“按下”作用的灯的“状态”相加，并将状态在二进制加法中表示，只考虑末尾一位就可。所以我们把这些1在十进制中相加再模除2，就是在二进制中表示的最后一位。</p>
-<p>我们最后把最后一行的所有灯周围直接影响到它的所有操作都加一遍，看看它是不是0。如果它是1，这次的第一行<code>operate1st[]</code>是不可行的，就去到<code>while (!operate(operate1st))</code>进行更换，直到所有的情况都尝试一次……</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> row = <span class="hljs-number">5</span>;<br><span class="hljs-type">int</span> col = <span class="hljs-number">6</span>;<br><br><span class="hljs-comment">// 状态矩阵（包含边界）</span><br><span class="hljs-type">int</span> states[row<span class="hljs-number">+2</span>][col<span class="hljs-number">+2</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-comment">// 操作矩阵（包含边界）</span><br><span class="hljs-type">int</span> operations[row<span class="hljs-number">+2</span>][col<span class="hljs-number">+2</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据第一行操作计算整个操作矩阵</span><br><span class="hljs-comment"> * 返回最后一行是否满足条件</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operate</span><span class="hljs-params">(<span class="hljs-type">int</span> operate1st[])</span> </span>&#123;<br>    <span class="hljs-comment">// 设置第一行操作</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; col; j++) &#123;<br>        operations[<span class="hljs-number">1</span>][j<span class="hljs-number">+1</span>] = operate1st[j];<br>    &#125;<br><br>    <span class="hljs-comment">// 计算2~5行的操作</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; row; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) &#123;<br>            operations[i<span class="hljs-number">+1</span>][j] = (operations[i][j] + operations[i<span class="hljs-number">-1</span>][j] + <br>                                 operations[i][j<span class="hljs-number">-1</span>] + operations[i][j<span class="hljs-number">+1</span>] + <br>                                 states[i][j]) % <span class="hljs-number">2</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 检查最后一行是否满足条件</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) &#123;<br>        <span class="hljs-type">int</span> check = (states[row][j] + operations[row][j<span class="hljs-number">-1</span>] + <br>                    operations[row][j] + operations[row][j<span class="hljs-number">+1</span>] + <br>                    operations[row<span class="hljs-number">-1</span>][j]) % <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span> (check == <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= row; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) &#123;<br>            cin &gt;&gt; states[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> operate1st[col] = &#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">// 第一行操作序列</span><br><br>    <span class="hljs-comment">// 枚举所有可能的第一行操作组合 (2^6=64种)</span><br>    <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">operate</span>(operate1st)) &#123;<br>        <span class="hljs-comment">// 二进制递增：类似二进制计数器</span><br>        operate1st[<span class="hljs-number">0</span>]++;<br>        <span class="hljs-type">int</span> index = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (operate1st[index] &gt; <span class="hljs-number">1</span> &amp;&amp; index &lt; col - <span class="hljs-number">1</span>) &#123;<br>            operate1st[index] = <span class="hljs-number">0</span>;<br>            index++;<br>            operate1st[index]++;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 输出结果矩阵 (5x6)</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= row; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= col; j++) &#123;<br>            cout &lt;&lt; operations[i][j] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;<br>        cout &lt;&lt; endl;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="问题起因"><a href="#问题起因" class="headerlink" title="问题起因"></a>问题起因</h2><p>群友冬莱在使用 MT7922，发哥的Wireless网卡。</p>
+<p>试图开启蓝牙，没能成功。</p>
+<p>我的机器也是 MT7922（RZ616），我的就没有问题，新内核自带 driver。</p>
+<h2 id="研究"><a href="#研究" class="headerlink" title="研究"></a>研究</h2><p>经过排查，是因为富士康&#x2F;鸿海代工的 MT7922 的</p>
+<ul>
+<li>Vendor id 是 0x0489</li>
+<li>Product id 是 0xe111</li>
+</ul>
+<p>所以 USB ID 是 0489:e111</p>
+<p>于是使用 AI 搜索：<br>I’ve noticed that the hardware database contains two entry<br>for: 0489:e111<br>in: &#x2F;usr&#x2F;lib&#x2F;udev&#x2F;hwdb.d&#x2F;20-gphoto2.hwdb and &#x2F;usr&#x2F;lib&#x2F;udev&#x2F;hwdb.d&#x2F;69-libmtp.hwdb</p>
+<p>That are responsible for the bluetooth hardware to be falsely considered as a MTP device.</p>
+<p>原来是蓝牙设备被 GVFS&#x2F;GIO 识别为 MTP 设备了！只有在富士康代工的 MT7922 上，会发生这种情况。</p>
+<p>GVFS（GNOME Virtual File System）和 GIO 是大量 Linux 发行版使用的用户空间文件系统实现。当检测到媒体设备（相机、手机、媒体播放器）时，会自动尝试：</p>
+<ul>
+<li>将设备挂载为存储位置</li>
+<li>创建一个虚拟文件系统端点用于文件浏览</li>
+<li>声称对该USB设备拥有独占访问权限</li>
+<li>触发关于“新设备”的桌面通知</li>
+</ul>
+<p>然而这次，一个无线网卡被当作媒体设备挂载了，就不能作为网络&#x2F;蓝牙设备使用了。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>找到了解决脚本，仓库：<br><a target="_blank" rel="noopener" href="https://github.com/LuanAdemi/mediatek7925e-bluetooth-fix">https://github.com/LuanAdemi/mediatek7925e-bluetooth-fix</a></p>
+<p>虽然是 MT7925e，但是都通用，因为需要修改的就是<code>/usr/lib/udev/hwdb.d</code>中的设备ID，它们都是一样的。</p>
+
                 
               </div>
             
@@ -338,32 +333,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Algorithm/" class="category-chain-item">Algorithm</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
     </div>
   
@@ -375,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>不知道哪的算法笔记 -&gt; Enumerate</div>
-      <div>https://blog.zlicdt.top/2025/06/07/algorithm-enumerate/</div>
+      <div>Foxconn / Hon Hai MT7922 在 Linux 下无法使用蓝牙</div>
+      <div>https://blog.zlicdt.top/2026/02/09/foxconn-mt7922-linux/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月7日</div>
+          <div>2026年2月8日</div>
         </div>
       
       
@@ -431,7 +405,7 @@
         var options = Object.assign(
           {"clientID":"9d04abd0afee763a1014","clientSecret":"8210a0393b31c72c3bc6c174a5e12d72c112a37d","repo":"gitalk-comments","owner":"zlicdt","admin":["zlicdt"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '1eb66b0f2d1b42729c2fee0f917243af'
+            id: 'e1d323f0337338f8758c502761670d1c'
           }
         )
         var gitalk = new Gitalk(options);
