@@ -434,7 +434,7 @@ sup > a::before,
   .navbar .dropdown-collapse,
   .top-nav-collapse,
   .navbar-col-show {
-    background: rgba(255,180,180,0.5);
+    background: rgba(120,153,206,0.5);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
   }
@@ -443,7 +443,7 @@ sup > a::before,
   .navbar .dropdown-collapse,
   .top-nav-collapse,
   .navbar-col-show {
-    background: #ffb4b4;
+    background: #7899ce;
   }
 }
 @media (max-width: 767px) {
@@ -496,14 +496,14 @@ sup > a::before,
 }
 @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
   #mobile-grid-menu {
-    background: rgba(255,180,180,0.5);
+    background: rgba(120,153,206,0.5);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
   }
 }
 @supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))) {
   #mobile-grid-menu {
-    background: #ffb4b4;
+    background: #7899ce;
   }
 }
 #mobile-grid-menu.show {
@@ -995,7 +995,7 @@ body.mobile-menu-open {
   --link-hover-color: #30a9de;
   --link-hover-bg-color: #f8f9fa;
   --line-color: #eaecef;
-  --navbar-bg-color: #ffb4b4;
+  --navbar-bg-color: #7899ce;
   --navbar-text-color: #fff;
   --subtitle-color: #fff;
   --scrollbar-color: #c4c6c9;
